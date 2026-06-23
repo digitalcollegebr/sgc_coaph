@@ -1,0 +1,22 @@
+# =============================================================================
+# Override para TESTE LOCAL — usar com a imagem buildada localmente.
+#   docker compose -f compose.yaml -f compose.local.yaml --env-file .env up -d
+#
+# Ajusta pull_policy para "missing" (não tenta puxar do Docker Hub, pois a
+# imagem coaph/sgc-erpnext:local existe apenas localmente).
+# =============================================================================
+services:
+  configurator:
+    pull_policy: missing
+  backend:
+    pull_policy: missing
+  frontend:
+    pull_policy: missing
+  websocket:
+    pull_policy: missing
+  scheduler:
+    pull_policy: missing
+  queue-short:
+    pull_policy: missing
+  queue-long:
+    pull_policy: missing

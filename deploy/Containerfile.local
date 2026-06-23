@@ -1,0 +1,27 @@
+# =============================================================================
+# SGC COAPH — Imagem customizada para TESTE LOCAL (sem Git remoto)
+#
+# Diferença para o Containerfile de produção:
+#   - NÃO clona o app de um repositório Git;
+#   - parte da imagem OFICIAL `frappe/erpnext:${ERPNEXT_BRANCH}` (já traz bench +
+#     frappe + erpnext compilados) e apenas ASSENTA o app local por cima.
+#
+# Use para validar/demonstrar rapidamente sem precisar publicar o app no Git.
+# Para produção, use o `Containerfile` (build a partir de apps.json no Git).
+#
+# Contexto de build = RAIZ do repositório (para enxergar ./apps/...).
+#   docker build -f deploy/Containerfile.local -t coaph/sgc-erpnext:local .
+# =============================================================================
+ARG ERPNEXT_BRANCH=version-15
+FROM frappe/erpnext:${ERPNEXT_BRANCH}
+
+# Copia o app local para dentro do bench (mantém dono frappe).
+COPY --chown=frappe:frappe apps/coaph_contract_ops /home/frappe/frappe-bench/apps/coaph_contract_ops
+
+# Instala o app no ambiente Python do bench (editable; backend flit).
+RUN /home/frappe/frappe-bench/env/bin/pip install --no-cache-dir \
+      -e /home/frappe/frappe-bench/apps/coaph_contract_ops
+
+# Registra o app no apps.txt (o `configurator` do compose também regenera isso).
+RUN printf "frappe\nerpnext\ncoaph_contract_ops\n" \
+      > /home/frappe/frappe-bench/sites/apps.txt
