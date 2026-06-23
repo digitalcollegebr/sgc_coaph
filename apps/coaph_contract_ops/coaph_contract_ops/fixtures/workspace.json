@@ -10,7 +10,7 @@
   "icon": "organization",
   "indicator_color": "blue",
   "sequence_id": 1.0,
-  "content": "[{\"id\": \"hdr_cockpit\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Cockpit Executivo \\u2014 SGC COAPH</b></span>\", \"col\": 12}}, {\"id\": \"nc_SGC_Contratos_Ativos\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Contratos Ativos\", \"col\": 3}}, {\"id\": \"nc_SGC_Contratos_em_Mobilizacao\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Contratos em Mobilizacao\", \"col\": 3}}, {\"id\": \"nc_SGC_Contratos_Operacao_Assistida\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Contratos Operacao Assistida\", \"col\": 3}}, {\"id\": \"nc_SGC_Contratos_Criticos\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Contratos Criticos\", \"col\": 3}}, {\"id\": \"nc_SGC_Receita_Mensal_Contratada\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Receita Mensal Contratada\", \"col\": 3}}, {\"id\": \"nc_SGC_Pendencias_Criticas\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Pendencias Criticas\", \"col\": 3}}, {\"id\": \"nc_SGC_Riscos_Criticos\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Riscos Criticos\", \"col\": 3}}, {\"id\": \"nc_SGC_Disputas_em_Andamento\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Disputas em Andamento\", \"col\": 3}}, {\"id\": \"hdr_charts\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>Indicadores</b></span>\", \"col\": 12}}, {\"id\": \"ch_SGC_Contratos_por_Status\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Contratos por Status\", \"col\": 6}}, {\"id\": \"ch_SGC_Contratos_por_Saude\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Contratos por Saude\", \"col\": 6}}, {\"id\": \"ch_SGC_Repasses_por_Status\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Repasses por Status\", \"col\": 6}}, {\"id\": \"ch_SGC_Disputas_por_Resultado\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Disputas por Resultado\", \"col\": 6}}, {\"id\": \"ch_SGC_Pendencias_por_Prioridade\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Pendencias por Prioridade\", \"col\": 6}}, {\"id\": \"hdr_atalhos\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>Atalhos</b></span>\", \"col\": 12}}, {\"id\": \"sc_Contrato_360\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Contrato 360\", \"col\": 3}}, {\"id\": \"sc_Oportunidade_COAPH\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Oportunidade COAPH\", \"col\": 3}}, {\"id\": \"sc_Disputa_Proposta_COAPH\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Disputa Proposta COAPH\", \"col\": 3}}, {\"id\": \"sc_Plano_Mobilizacao\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Plano Mobilizacao\", \"col\": 3}}, {\"id\": \"sc_Ciclo_Mensal_Medicao\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Ciclo Mensal Medicao\", \"col\": 3}}, {\"id\": \"sc_Repasse_Cooperados\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Repasse Cooperados\", \"col\": 3}}, {\"id\": \"sc_Pendencia_Contratual\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Pendencia Contratual\", \"col\": 3}}, {\"id\": \"sc_Renovacao_Contratual\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Renovacao Contratual\", \"col\": 3}}, {\"id\": \"hdr_modulos\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>M\\u00f3dulos</b></span>\", \"col\": 12}}, {\"id\": \"card_Entrada_do_Contrato\", \"type\": \"card\", \"data\": {\"card_name\": \"Entrada do Contrato\", \"col\": 4}}, {\"id\": \"card_Gest\\u00e3o_do_Contrato\", \"type\": \"card\", \"data\": {\"card_name\": \"Gest\\u00e3o do Contrato\", \"col\": 4}}, {\"id\": \"card_Ciclo_Mensal_e_Financeiro\", \"type\": \"card\", \"data\": {\"card_name\": \"Ciclo Mensal e Financeiro\", \"col\": 4}}, {\"id\": \"card_Governan\\u00e7a_Contratual\", \"type\": \"card\", \"data\": {\"card_name\": \"Governan\\u00e7a Contratual\", \"col\": 4}}, {\"id\": \"card_Cadastros\", \"type\": \"card\", \"data\": {\"card_name\": \"Cadastros\", \"col\": 4}}]",
+  "content": "[{\"id\": \"hdr_cockpit\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Cockpit Executivo \\u2014 SGC COAPH</b></span>\", \"col\": 12}}, {\"id\": \"nc_SGC_Contratos_Ativos\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Contratos Ativos\", \"col\": 3}}, {\"id\": \"nc_SGC_Contratos_em_Mobilizacao\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Contratos em Mobilizacao\", \"col\": 3}}, {\"id\": \"nc_SGC_Contratos_Operacao_Assistida\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Contratos Operacao Assistida\", \"col\": 3}}, {\"id\": \"nc_SGC_Contratos_Criticos\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Contratos Criticos\", \"col\": 3}}, {\"id\": \"nc_SGC_Receita_Mensal_Contratada\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Receita Mensal Contratada\", \"col\": 3}}, {\"id\": \"nc_SGC_Pendencias_Criticas\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Pendencias Criticas\", \"col\": 3}}, {\"id\": \"nc_SGC_Riscos_Criticos\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Riscos Criticos\", \"col\": 3}}, {\"id\": \"nc_SGC_Disputas_em_Andamento\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"SGC Disputas em Andamento\", \"col\": 3}}, {\"id\": \"hdr_charts\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>Indicadores</b></span>\", \"col\": 12}}, {\"id\": \"ch_SGC_Contratos_por_Status\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Contratos por Status\", \"col\": 6}}, {\"id\": \"ch_SGC_Contratos_por_Saude\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Contratos por Saude\", \"col\": 6}}, {\"id\": \"ch_SGC_Repasses_por_Status\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Repasses por Status\", \"col\": 6}}, {\"id\": \"ch_SGC_Disputas_por_Resultado\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Disputas por Resultado\", \"col\": 6}}, {\"id\": \"ch_SGC_Pendencias_por_Prioridade\", \"type\": \"chart\", \"data\": {\"chart_name\": \"SGC Pendencias por Prioridade\", \"col\": 6}}, {\"id\": \"hdr_atalhos\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>Atalhos</b></span>\", \"col\": 12}}, {\"id\": \"sc_Contrato_360\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Contrato 360\", \"col\": 3}}, {\"id\": \"sc_Oportunidade_COAPH\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Oportunidade COAPH\", \"col\": 3}}, {\"id\": \"sc_Disputa_Proposta_COAPH\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Disputa Proposta COAPH\", \"col\": 3}}, {\"id\": \"sc_Plano_Mobilizacao\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Plano Mobilizacao\", \"col\": 3}}, {\"id\": \"sc_Ciclo_Mensal_Medicao\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Ciclo Mensal Medicao\", \"col\": 3}}, {\"id\": \"sc_Repasse_Cooperados\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Repasse Cooperados\", \"col\": 3}}, {\"id\": \"sc_Pendencia_Contratual\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Pendencia Contratual\", \"col\": 3}}, {\"id\": \"sc_Renovacao_Contratual\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Renovacao Contratual\", \"col\": 3}}, {\"id\": \"hdr_modulos\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h5\\\"><b>M\\u00f3dulos</b></span>\", \"col\": 12}}, {\"id\": \"card_Entrada_do_Contrato\", \"type\": \"card\", \"data\": {\"card_name\": \"Entrada do Contrato\", \"col\": 4}}, {\"id\": \"card_Gest\\u00e3o_do_Contrato\", \"type\": \"card\", \"data\": {\"card_name\": \"Gest\\u00e3o do Contrato\", \"col\": 4}}, {\"id\": \"card_Ciclo_Mensal_e_Financeiro\", \"type\": \"card\", \"data\": {\"card_name\": \"Ciclo Mensal e Financeiro\", \"col\": 4}}, {\"id\": \"card_Governan\\u00e7a_Contratual\", \"type\": \"card\", \"data\": {\"card_name\": \"Governan\\u00e7a Contratual\", \"col\": 4}}, {\"id\": \"card_Cadastros\", \"type\": \"card\", \"data\": {\"card_name\": \"Cadastros\", \"col\": 4}}, {\"id\": \"card_Relatorios\", \"type\": \"card\", \"data\": {\"card_name\": \"Relat\\u00f3rios\", \"col\": 4}}]",
   "shortcuts": [
    {
     "type": "DocType",
@@ -266,6 +266,121 @@
     "hidden": 0,
     "onboard": 0,
     "is_query_report": 0
+   },
+   {
+    "type": "Card Break",
+    "label": "Relatórios",
+    "hidden": 0,
+    "link_count": 12,
+    "onboard": 0
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Contratos por Status",
+    "label": "Contratos por Status",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Contratos por Saude",
+    "label": "Contratos por Saude",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Contratos Vencendo",
+    "label": "Contratos Vencendo",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Mobilizacoes em Atraso",
+    "label": "Mobilizacoes em Atraso",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Ciclos Mensais por Competencia",
+    "label": "Ciclos Mensais por Competencia",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Faturado x Recebido",
+    "label": "Faturado x Recebido",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Repasses Pendentes",
+    "label": "Repasses Pendentes",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Pendencias Criticas",
+    "label": "Pendencias Criticas",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Riscos Criticos",
+    "label": "Riscos Criticos",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Pipeline de Oportunidades",
+    "label": "Pipeline de Oportunidades",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Disputas por Resultado",
+    "label": "Disputas por Resultado",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
+   },
+   {
+    "type": "Link",
+    "link_type": "Report",
+    "link_to": "Tempo Medio de Mobilizacao",
+    "label": "Tempo Medio de Mobilizacao",
+    "hidden": 0,
+    "onboard": 0,
+    "is_query_report": 1
    }
   ],
   "number_cards": [

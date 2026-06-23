@@ -1,0 +1,35 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2026-06-23 00:00:00.000000",
+ "module": "COAPH ContractOps",
+ "name": "Ciclos Mensais por Competencia",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    competencia AS \"Competência::120\",\n    COUNT(*) AS \"Qtd Ciclos:Int:100\",\n    SUM(valor_producao) AS \"Produção:Currency:150\",\n    SUM(valor_faturado) AS \"Faturado:Currency:150\",\n    SUM(valor_recebido) AS \"Recebido:Currency:150\",\n    SUM(valor_repasse) AS \"Repasse:Currency:150\"\nFROM `tabCiclo Mensal Medicao`\nGROUP BY competencia\nORDER BY competencia DESC",
+ "ref_doctype": "Ciclo Mensal Medicao",
+ "report_name": "Ciclos Mensais por Competencia",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "SGC Administrador"
+  },
+  {
+   "role": "SGC Diretoria"
+  },
+  {
+   "role": "SGC Operacao"
+  },
+  {
+   "role": "SGC Financeiro"
+  }
+ ]
+}

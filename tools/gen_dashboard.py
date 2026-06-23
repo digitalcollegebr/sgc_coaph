@@ -113,6 +113,14 @@ LINK_GROUPS = [
     ]),
 ]
 
+# Relatórios (Query Reports) — grupo com link_type "Report"
+REPORTS = [
+    "Contratos por Status", "Contratos por Saude", "Contratos Vencendo",
+    "Mobilizacoes em Atraso", "Ciclos Mensais por Competencia", "Faturado x Recebido",
+    "Repasses Pendentes", "Pendencias Criticas", "Riscos Criticos",
+    "Pipeline de Oportunidades", "Disputas por Resultado", "Tempo Medio de Mobilizacao",
+]
+
 
 def build_content():
     blocks = [
@@ -137,6 +145,8 @@ def build_content():
     for grp, _ in LINK_GROUPS:
         blocks.append({"id": "card_" + grp.replace(" ", "_"), "type": "card",
                        "data": {"card_name": grp, "col": 4}})
+    blocks.append({"id": "card_Relatorios", "type": "card",
+                   "data": {"card_name": "Relatórios", "col": 4}})
     return json.dumps(blocks)
 
 
@@ -150,6 +160,11 @@ for grp, items in LINK_GROUPS:
     for dt, label in items:
         link_rows.append({"type": "Link", "link_type": "DocType", "link_to": dt,
                           "label": label, "hidden": 0, "onboard": 0, "is_query_report": 0})
+link_rows.append({"type": "Card Break", "label": "Relatórios", "hidden": 0,
+                  "link_count": len(REPORTS), "onboard": 0})
+for rep in REPORTS:
+    link_rows.append({"type": "Link", "link_type": "Report", "link_to": rep,
+                      "label": rep, "hidden": 0, "onboard": 0, "is_query_report": 1})
 
 workspace = {
     "doctype": "Workspace", "name": "SGC COAPH", "label": "SGC COAPH",

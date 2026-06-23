@@ -1,0 +1,32 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2026-06-23 00:00:00.000000",
+ "module": "COAPH ContractOps",
+ "name": "Pipeline de Oportunidades",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    name AS \"Oportunidade:Link/Oportunidade COAPH:200\",\n    contratante AS \"Contratante:Link/Contratante COAPH:200\",\n    status AS \"Status::180\",\n    prioridade AS \"Prioridade::100\",\n    valor_estimado_mensal AS \"Estim. Mensal:Currency:140\",\n    probabilidade AS \"Prob.:Percent:90\",\n    data_prevista_decisao AS \"Decisão Prevista:Date:130\"\nFROM `tabOportunidade COAPH`\nWHERE status NOT IN ('Descartada', 'Convertida em disputa/proposta')\nORDER BY FIELD(prioridade, 'Crítica', 'Alta', 'Média', 'Baixa'), data_prevista_decisao ASC",
+ "ref_doctype": "Oportunidade COAPH",
+ "report_name": "Pipeline de Oportunidades",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "SGC Administrador"
+  },
+  {
+   "role": "SGC Diretoria"
+  },
+  {
+   "role": "SGC Comercial"
+  }
+ ]
+}

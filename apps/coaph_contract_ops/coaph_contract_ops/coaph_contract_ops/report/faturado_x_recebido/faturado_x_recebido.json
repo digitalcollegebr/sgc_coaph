@@ -19,8 +19,14 @@
  "report_name": "Faturado x Recebido",
  "report_type": "Query Report",
  "roles": [
-  {"role": "SGC Administrador"},
-  {"role": "SGC Diretoria"},
-  {"role": "SGC Financeiro"}
+  {
+   "role": "SGC Administrador"
+  },
+  {
+   "role": "SGC Diretoria"
+  },
+  {
+   "role": "SGC Financeiro"
+  }
  ]
 }

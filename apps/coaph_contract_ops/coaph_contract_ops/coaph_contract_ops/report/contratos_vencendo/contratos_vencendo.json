@@ -19,9 +19,17 @@
  "report_name": "Contratos Vencendo",
  "report_type": "Query Report",
  "roles": [
-  {"role": "SGC Administrador"},
-  {"role": "SGC Diretoria"},
-  {"role": "SGC Comercial"},
-  {"role": "SGC Operacao"}
+  {
+   "role": "SGC Administrador"
+  },
+  {
+   "role": "SGC Diretoria"
+  },
+  {
+   "role": "SGC Comercial"
+  },
+  {
+   "role": "SGC Operacao"
+  }
  ]
 }

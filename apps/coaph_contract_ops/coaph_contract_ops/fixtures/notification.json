@@ -1,0 +1,140 @@
+[
+ {
+  "doctype": "Notification",
+  "name": "Notificacao de Producao Validada",
+  "enabled": 1,
+  "is_standard": 1,
+  "module": "COAPH ContractOps",
+  "channel": "System Notification",
+  "document_type": "Ciclo Mensal Medicao",
+  "event": "Value Change",
+  "value_changed": "status",
+  "send_to_all_assignees": 0,
+  "condition": "doc.status == 'Produção validada'",
+  "subject": "Produção validada — {{ doc.name }}",
+  "message": "A produção do ciclo {{ doc.competencia }} do contrato {{ doc.contrato }} foi validada. Liberar faturamento.",
+  "recipients": [
+   {
+    "receiver_by_role": "SGC Financeiro"
+   },
+   {
+    "receiver_by_role": "SGC Operacao"
+   }
+  ]
+ },
+ {
+  "doctype": "Notification",
+  "name": "Notificacao de Faturamento Emitido",
+  "enabled": 1,
+  "is_standard": 1,
+  "module": "COAPH ContractOps",
+  "channel": "System Notification",
+  "document_type": "Faturamento COAPH",
+  "event": "Value Change",
+  "value_changed": "status",
+  "send_to_all_assignees": 0,
+  "condition": "doc.status == 'NF emitida'",
+  "subject": "Faturamento emitido — {{ doc.name }}",
+  "message": "NF {{ doc.numero_nf }} emitida para o contrato {{ doc.contrato }} (competência {{ doc.competencia }}).",
+  "recipients": [
+   {
+    "receiver_by_role": "SGC Financeiro"
+   },
+   {
+    "receiver_by_role": "SGC Diretoria"
+   }
+  ]
+ },
+ {
+  "doctype": "Notification",
+  "name": "Notificacao de Demonstrativos Publicados",
+  "enabled": 1,
+  "is_standard": 1,
+  "module": "COAPH ContractOps",
+  "channel": "System Notification",
+  "document_type": "Repasse Cooperados",
+  "event": "Value Change",
+  "value_changed": "status",
+  "send_to_all_assignees": 0,
+  "condition": "doc.status == 'Demonstrativos publicados'",
+  "subject": "Demonstrativos de repasse publicados — {{ doc.name }}",
+  "message": "Os Demonstrativos de Repasse da competência {{ doc.competencia }} foram publicados.",
+  "recipients": [
+   {
+    "receiver_by_role": "SGC Financeiro"
+   },
+   {
+    "receiver_by_role": "SGC RH Cooperados"
+   }
+  ]
+ },
+ {
+  "doctype": "Notification",
+  "name": "Notificacao de Repasse Concluido",
+  "enabled": 1,
+  "is_standard": 1,
+  "module": "COAPH ContractOps",
+  "channel": "System Notification",
+  "document_type": "Repasse Cooperados",
+  "event": "Value Change",
+  "value_changed": "status",
+  "send_to_all_assignees": 0,
+  "condition": "doc.status == 'Pago'",
+  "subject": "Repasse concluído — {{ doc.name }}",
+  "message": "O Repasse aos Cooperados da competência {{ doc.competencia }} foi concluído (pago).",
+  "recipients": [
+   {
+    "receiver_by_role": "SGC Financeiro"
+   },
+   {
+    "receiver_by_role": "SGC Diretoria"
+   }
+  ]
+ },
+ {
+  "doctype": "Notification",
+  "name": "Alerta de Pendencia Critica",
+  "enabled": 1,
+  "is_standard": 1,
+  "module": "COAPH ContractOps",
+  "channel": "System Notification",
+  "document_type": "Pendencia Contratual",
+  "event": "New",
+  "value_changed": null,
+  "send_to_all_assignees": 0,
+  "condition": "doc.prioridade == 'Crítica'",
+  "subject": "Pendência crítica aberta — {{ doc.name }}",
+  "message": "Pendência crítica no contrato {{ doc.contrato }} (área {{ doc.area }}): {{ doc.descricao }}.",
+  "recipients": [
+   {
+    "receiver_by_role": "SGC Operacao"
+   },
+   {
+    "receiver_by_role": "SGC Diretoria"
+   }
+  ]
+ },
+ {
+  "doctype": "Notification",
+  "name": "Alerta de Contrato Critico",
+  "enabled": 1,
+  "is_standard": 1,
+  "module": "COAPH ContractOps",
+  "channel": "System Notification",
+  "document_type": "Contrato 360",
+  "event": "Value Change",
+  "value_changed": "saude_contrato",
+  "send_to_all_assignees": 0,
+  "condition": "doc.saude_contrato in ['Crítico', 'Risco de perda']",
+  "subject": "Saúde do contrato em risco — {{ doc.name }}",
+  "message": "O contrato {{ doc.titulo_contrato }} está com saúde '{{ doc.saude_contrato }}'. Avaliar plano de ação.",
+  "recipients": [
+   {
+    "receiver_by_role": "SGC Diretoria"
+   },
+   {
+    "receiver_by_role": "SGC Operacao"
+   }
+  ]
+ }
+]
