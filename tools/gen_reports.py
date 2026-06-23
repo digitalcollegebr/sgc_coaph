@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Gera os 12 Query Reports nativos do módulo COAPH ContractOps.
+"""Gera os 12 Query Reports nativos do módulo COAPH Contract Ops.
 Cada relatório: report/<scrub>/<scrub>.json + __init__.py  (is_standard=Yes).
 Reexecutável (single source of truth — sobrescreve os 3 iniciais também).
 
@@ -14,7 +14,7 @@ REPORT_DIR = os.path.join(
     "apps", "coaph_contract_ops", "coaph_contract_ops",
     "coaph_contract_ops", "report",
 )
-MODULE = "COAPH ContractOps"
+MODULE = "COAPH Contract Ops"
 TS = "2026-06-23 00:00:00.000000"
 
 ADMIN, DIR = "SGC Administrador", "SGC Diretoria"

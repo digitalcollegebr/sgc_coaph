@@ -1,5 +1,5 @@
 app_name = "coaph_contract_ops"
-app_title = "COAPH ContractOps"
+app_title = "COAPH Contract Ops"
 app_publisher = "COAPH"
 app_description = "SGC COAPH — Gestão 360 de Contratos"
 app_email = "ti@coaph.example.org"
@@ -36,12 +36,19 @@ fixtures = [
         "Workflow Ciclo Mensal Medicao",
         "Workflow Renovacao Contratual",
     ]]]},
-    {"dt": "Workspace", "filters": [["module", "=", "COAPH ContractOps"]]},
-    {"dt": "Custom Field", "filters": [["module", "=", "COAPH ContractOps"]]},
-    {"dt": "Property Setter", "filters": [["module", "=", "COAPH ContractOps"]]},
-    {"dt": "Dashboard Chart", "filters": [["module", "=", "COAPH ContractOps"]]},
-    {"dt": "Number Card", "filters": [["module", "=", "COAPH ContractOps"]]},
-    {"dt": "Notification", "filters": [["module", "=", "COAPH ContractOps"]]},
+    {"dt": "Workspace", "filters": [["module", "=", "COAPH Contract Ops"]]},
+    {"dt": "Custom Field", "filters": [["module", "=", "COAPH Contract Ops"]]},
+    {"dt": "Property Setter", "filters": [["module", "=", "COAPH Contract Ops"]]},
+    {"dt": "Dashboard Chart", "filters": [["module", "=", "COAPH Contract Ops"]]},
+    {"dt": "Number Card", "filters": [["module", "=", "COAPH Contract Ops"]]},
+    {"dt": "Notification", "filters": [["name", "in", [
+        "Notificacao de Producao Validada",
+        "Notificacao de Faturamento Emitido",
+        "Notificacao de Demonstrativos Publicados",
+        "Notificacao de Repasse Concluido",
+        "Alerta de Pendencia Critica",
+        "Alerta de Contrato Critico",
+    ]]]},
 ]
 
 # ------------------------------------------------------------------

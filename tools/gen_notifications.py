@@ -12,13 +12,13 @@ FIX = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     "apps", "coaph_contract_ops", "coaph_contract_ops", "fixtures",
 )
-MODULE = "COAPH ContractOps"
+MODULE = "COAPH Contract Ops"
 
 
 def notif(name, dt, subject, message, roles, event="Value Change",
           value_changed=None, condition=None):
     return {
-        "doctype": "Notification", "name": name, "enabled": 1, "is_standard": 1,
+        "doctype": "Notification", "name": name, "enabled": 1, "is_standard": 0,
         "module": MODULE, "channel": "System Notification",
         "document_type": dt, "event": event,
         "value_changed": value_changed, "send_to_all_assignees": 0,

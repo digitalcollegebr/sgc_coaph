@@ -20,14 +20,25 @@ PREFIXO = "DEMO"
 
 
 # ---------------------------------------------------------------- helpers
+# Campos usados como estado de workflow — não podem ser definidos direto no
+# insert (o Frappe valida a transição). Inserimos no estado inicial e depois
+# gravamos o estado desejado via db.set_value (apenas para dados de demo).
+WF_STATE_FIELDS = ("status", "status_contrato")
+
+
 def goc(doctype, chave, valores=None):
     """get-or-create por chave natural. Retorna o name."""
     nome = frappe.db.exists(doctype, chave)
     if nome:
         return nome
-    doc = frappe.get_doc({"doctype": doctype, **chave, **(valores or {})})
+    valores = dict(valores or {})
+    estados = {k: valores.pop(k) for k in WF_STATE_FIELDS if k in valores}
+    doc = frappe.get_doc({"doctype": doctype, **chave, **valores})
     doc.flags.ignore_permissions = True
     doc.insert(ignore_permissions=True)
+    for campo, valor in estados.items():
+        if valor:
+            frappe.db.set_value(doctype, doc.name, campo, valor, update_modified=False)
     return doc.name
 
 
@@ -61,26 +72,32 @@ ESPECIALIDADES = ["Clínica Médica", "Pediatria", "Ortopedia", "Cardiologia", "
 
 
 def seed_contratantes():
+    """Retorna mapa nome_contratante -> name (id por série)."""
+    cmap = {}
     for nome, tipo, cnpj, cidade, uf in CONTRATANTES:
-        goc("Contratante COAPH", {"nome_contratante": nome}, {
+        cmap[nome] = goc("Contratante COAPH", {"nome_contratante": nome}, {
             "tipo_contratante": tipo, "cnpj": cnpj, "razao_social": nome,
             "cidade": cidade, "estado": uf, "status": "Ativo",
             "email_contato": "contato@exemplo.org", "telefone_contato": "(85) 4000-0000",
         })
     _log(f"{len(CONTRATANTES)} contratantes")
+    return cmap
 
 
-def seed_unidades():
+def seed_unidades(cmap):
+    """Retorna mapa nome_unidade -> name (id por série)."""
+    umap = {}
     for nome, contratante, tipo in UNIDADES:
-        goc("Unidade Atendimento", {"nome_unidade": nome}, {
-            "contratante": contratante, "tipo_unidade": tipo,
+        umap[nome] = goc("Unidade Atendimento", {"nome_unidade": nome}, {
+            "contratante": cmap[contratante], "tipo_unidade": tipo,
             "cidade": "Fortaleza", "estado": "CE", "status": "Ativa",
         })
     _log(f"{len(UNIDADES)} unidades de atendimento")
+    return umap
 
 
 # ---------------------------------------------------------------- pipeline comercial
-def seed_pipeline():
+def seed_pipeline(cmap):
     contratantes = [c[0] for c in CONTRATANTES]
     statuses_op = [
         "Demanda identificada", "Oportunidade registrada", "Oportunidade qualificada",
@@ -92,7 +109,7 @@ def seed_pipeline():
     for i in range(10):
         titulo = f"{PREFIXO} Oportunidade {i + 1:02d} — {contratantes[i % len(contratantes)]}"
         nome = goc("Oportunidade COAPH", {"titulo": titulo}, {
-            "contratante": contratantes[i % len(contratantes)],
+            "contratante": cmap[contratantes[i % len(contratantes)]],
             "origem": "Edital" if i % 2 == 0 else "Prospecção",
             "tipo_cliente": "Público" if i % 2 == 0 else "Privado",
             "tipo_servico": "Gestão de plantões médicos",
@@ -151,7 +168,7 @@ def seed_pipeline():
 
 
 # ---------------------------------------------------------------- contratos (7 cenários)
-def seed_contratos(formalizacoes):
+def seed_contratos(cmap, umap, formalizacoes):
     hoje = nowdate()
     # (titulo, contratante, unidade, status, saude, vigencia_inicio, vigencia_fim, valor_mensal, tipo)
     cenarios = [
@@ -187,7 +204,7 @@ def seed_contratos(formalizacoes):
     contratos = []
     for i, (titulo, contratante, unidade, status, saude, vi, vf, vm, tipo) in enumerate(cenarios):
         valores = {
-            "contratante": contratante, "unidade_atendimento": unidade,
+            "contratante": cmap[contratante], "unidade_atendimento": umap[unidade],
             "tipo_contrato": tipo, "numero_contrato": f"{PREFIXO}-C{i + 1:03d}",
             "vigencia_inicio": vi, "vigencia_fim": vf,
             "valor_mensal": vm, "valor_global": vm * 24,
@@ -403,10 +420,10 @@ def seed_governanca(contratos, ciclos):
 # ---------------------------------------------------------------- entrypoints
 def execute():
     print("== Seed de dados demo SGC COAPH ==")
-    seed_contratantes()
-    seed_unidades()
-    formalizacoes = seed_pipeline()
-    contratos = seed_contratos(formalizacoes)
+    cmap = seed_contratantes()
+    umap = seed_unidades(cmap)
+    formalizacoes = seed_pipeline(cmap)
+    contratos = seed_contratos(cmap, umap, formalizacoes)
     seed_planos_e_cooperados(contratos)
     ciclos = seed_ciclos_financeiro(contratos)
     seed_governanca(contratos, ciclos)

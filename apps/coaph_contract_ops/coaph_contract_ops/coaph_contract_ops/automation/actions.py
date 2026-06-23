@@ -91,9 +91,11 @@ def criar_contrato(formalizacao):
         "formalizacao_contratual": f.name,
         "data_assinatura": f.data_assinatura,
         "responsavel_juridico": f.responsavel_juridico,
-        "status_contrato": "Em mobilização",
         "saude_contrato": "Saudável",
     }).insert()
+    # "Em mobilização" não é o estado inicial do workflow; grava direto para
+    # não disparar o guarda de transição (automação 4).
+    frappe.db.set_value("Contrato 360", contrato.name, "status_contrato", "Em mobilização")
     # cria Plano de Mobilização inicial junto (automação 3)
     criar_plano_mobilizacao(contrato.name)
     return contrato.name

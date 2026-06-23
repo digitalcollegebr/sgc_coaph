@@ -23,7 +23,7 @@ BASE = os.path.join(
     "apps", "coaph_contract_ops", "coaph_contract_ops",
     "coaph_contract_ops", "doctype",
 )
-MODULE = "COAPH ContractOps"
+MODULE = "COAPH Contract Ops"
 TS = "2026-06-23 00:00:00.000000"
 
 ADMIN = "SGC Administrador"
@@ -43,7 +43,9 @@ def scrub(name):
 
 
 def classname(name):
-    return "".join(p.capitalize() for p in name.replace("-", " ").split(" "))
+    # Frappe deriva o nome da classe do controller como doctype.replace(" ", "")
+    # (preserva maiúsculas — ex.: "Faturamento COAPH" -> "FaturamentoCOAPH").
+    return name.replace(" ", "").replace("-", "")
 
 
 def f(fieldname, fieldtype, label=None, options=None, reqd=0, in_list_view=0,
@@ -431,7 +433,7 @@ build("Contrato 360", naming_prefix="CONT-.YYYY.-.#####", title_field="titulo_co
             options=["Em formalização", "Em mobilização", "Operação assistida", "Ativo",
                      "Ativo com atenção", "Crítico", "Em renovação", "Suspenso",
                      "Em encerramento", "Encerrado"],
-            default="Em mobilização", in_list_view=1),
+            default="Em formalização", in_list_view=1),
           col("cb_saude"),
           f("saude_contrato", "Select", "Saúde do Contrato",
             options=["Saudável", "Atenção", "Crítico", "Risco de perda"], default="Saudável", in_list_view=1),

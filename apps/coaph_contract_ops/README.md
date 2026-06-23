@@ -1,11 +1,11 @@
-# COAPH ContractOps
+# COAPH Contract Ops
 
 App customizado Frappe que implementa o **SGC COAPH — Gestão 360 de Contratos**
 sobre ERPNext/Frappe oficiais.
 
 - **Nome técnico:** `coaph_contract_ops`
-- **Nome amigável:** COAPH ContractOps
-- **Módulo principal:** COAPH ContractOps
+- **Nome amigável:** COAPH Contract Ops
+- **Módulo principal:** COAPH Contract Ops
 - **Produto:** SGC COAPH — Gestão 360 de Contratos
 
 > Este app **não faz fork** do ERPNext/Frappe e **não altera código core**.

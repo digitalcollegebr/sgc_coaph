@@ -12,7 +12,7 @@ FIX = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     "apps", "coaph_contract_ops", "coaph_contract_ops", "fixtures",
 )
-MODULE = "COAPH ContractOps"
+MODULE = "COAPH Contract Ops"
 
 # ---------------- Number Cards ----------------
 def card(name, label, dt, function="Count", based_on=None, filters=None, color="#1f6feb"):
