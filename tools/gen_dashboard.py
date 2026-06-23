@@ -137,6 +137,8 @@ def build_content():
                        "data": {"chart_name": ch["name"], "col": 6}})
     blocks.append({"id": "hdr_atalhos", "type": "header",
                    "data": {"text": "<span class=\"h5\"><b>Atalhos</b></span>", "col": 12}})
+    blocks.append({"id": "sc_painel_exec", "type": "shortcut",
+                   "data": {"shortcut_name": "Painel Executivo de Contratos", "col": 4}})
     for dt, _ in SHORTCUTS:
         blocks.append({"id": "sc_" + dt.replace(" ", "_"), "type": "shortcut",
                        "data": {"shortcut_name": dt, "col": 3}})
@@ -150,8 +152,10 @@ def build_content():
     return json.dumps(blocks)
 
 
-shortcut_rows = [{"type": "DocType", "link_to": dt, "label": dt, "color": color, "doc_view": "List"}
-                 for dt, color in SHORTCUTS]
+shortcut_rows = [{"type": "Page", "link_to": "painel-executivo-contratos",
+                  "label": "Painel Executivo de Contratos", "color": "Blue", "doc_view": ""}]
+shortcut_rows += [{"type": "DocType", "link_to": dt, "label": dt, "color": color, "doc_view": "List"}
+                  for dt, color in SHORTCUTS]
 
 link_rows = []
 for grp, items in LINK_GROUPS:

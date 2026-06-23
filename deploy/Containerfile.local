@@ -25,3 +25,8 @@ RUN /home/frappe/frappe-bench/env/bin/pip install --no-cache-dir \
 # Registra o app no apps.txt (o `configurator` do compose também regenera isso).
 RUN printf "frappe\nerpnext\ncoaph_contract_ops\n" \
       > /home/frappe/frappe-bench/sites/apps.txt
+
+# Empacota os assets do app (JS/CSS da Page "Painel Executivo", client scripts).
+# Necessário para a Page de Desk renderizar; os assets ficam em sites/assets,
+# que inicializa o volume nomeado na primeira subida.
+RUN cd /home/frappe/frappe-bench && bench build --app coaph_contract_ops
