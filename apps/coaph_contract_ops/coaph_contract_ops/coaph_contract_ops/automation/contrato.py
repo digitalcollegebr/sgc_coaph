@@ -35,7 +35,9 @@ def _calcular_prazo_meses(doc):
 
 
 def _calcular_valor_anual(doc):
-    if flt(doc.get("valor_mensal")) and not flt(doc.get("valor_anual")):
+    # valor_anual é read_only no formulário => sempre derivado de valor_mensal,
+    # recalculando quando valor_mensal muda.
+    if flt(doc.get("valor_mensal")):
         doc.valor_anual = flt(doc.valor_mensal) * 12
 
 
