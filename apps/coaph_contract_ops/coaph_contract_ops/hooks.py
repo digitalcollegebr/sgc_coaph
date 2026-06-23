@@ -71,6 +71,19 @@ doc_events = {
     "Contrato 360": {
         "validate": "coaph_contract_ops.coaph_contract_ops.automation.contrato.validate_contrato",
     },
+    "Recebimento COAPH": {
+        "validate": "coaph_contract_ops.coaph_contract_ops.automation.rollup.recebimento_validate",
+        "on_update": "coaph_contract_ops.coaph_contract_ops.automation.rollup.atualizar_ciclo",
+        "on_trash": "coaph_contract_ops.coaph_contract_ops.automation.rollup.atualizar_ciclo",
+    },
+    "Faturamento COAPH": {
+        "on_update": "coaph_contract_ops.coaph_contract_ops.automation.rollup.atualizar_ciclo",
+        "on_trash": "coaph_contract_ops.coaph_contract_ops.automation.rollup.atualizar_ciclo",
+    },
+    "Repasse Cooperados": {
+        "on_update": "coaph_contract_ops.coaph_contract_ops.automation.rollup.atualizar_ciclo",
+        "on_trash": "coaph_contract_ops.coaph_contract_ops.automation.rollup.atualizar_ciclo",
+    },
 }
 
 # ------------------------------------------------------------------

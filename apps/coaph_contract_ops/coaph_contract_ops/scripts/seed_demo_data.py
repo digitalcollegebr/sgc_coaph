@@ -247,11 +247,20 @@ def seed_planos_e_cooperados(contratos):
                 "data_inicio_prevista": add_days(nowdate(), -30 + j * 3),
                 "data_fim_prevista": add_days(nowdate(), -23 + j * 3),
             })
-        nome = goc("Plano Mobilizacao", {"contrato": contratos[i]}, {
+        valores = {
             "contratante": c.contratante, "unidade_atendimento": c.unidade_atendimento,
             "status": plano_status[i], "progresso_percentual": 40 + i * 10,
             "etapas": etapas,
-        })
+            "data_kickoff_prevista": add_days(nowdate(), -45),
+            "data_prevista_go_live": add_days(nowdate(), -15),
+        }
+        # planos concluídos registram kickoff e go-live (alimenta o relatório
+        # "Tempo Médio de Mobilização")
+        if plano_status[i] in ("Operação liberada", "Onboarding concluído"):
+            valores["data_kickoff_realizada"] = add_days(nowdate(), -45 + i)
+            valores["data_go_live"] = add_days(nowdate(), -15 + i)
+            valores["progresso_percentual"] = 100
+        nome = goc("Plano Mobilizacao", {"contrato": contratos[i]}, valores)
         planos.append(nome)
     _log(f"{len(planos)} planos de mobilização")
 
