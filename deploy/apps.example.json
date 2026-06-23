@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://github.com/frappe/erpnext",
+    "branch": "version-15"
+  },
+  {
+    "url": "git@github.com:SUA_ORG/coaph_contract_ops.git",
+    "branch": "main"
+  }
+]

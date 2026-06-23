@@ -1,0 +1,297 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "oportunidade",
+  "contratante",
+  "unidade_atendimento",
+  "cb1",
+  "responsavel",
+  "status",
+  "decisao",
+  "sec_analises",
+  "analise_tecnica",
+  "analise_financeira",
+  "analise_juridica",
+  "disponibilidade_cooperados",
+  "sec_riscos",
+  "margem_estimativa",
+  "risco_operacional",
+  "cb2",
+  "risco_juridico",
+  "risco_financeiro",
+  "sec_decisao",
+  "parecer_final",
+  "data_decisao",
+  "aprovador",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "VIAB-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "oportunidade",
+   "fieldtype": "Link",
+   "label": "Oportunidade",
+   "options": "Oportunidade COAPH",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "contratante",
+   "fieldtype": "Link",
+   "label": "Contratante",
+   "options": "Contratante COAPH"
+  },
+  {
+   "fieldname": "unidade_atendimento",
+   "fieldtype": "Link",
+   "label": "Unidade de Atendimento",
+   "options": "Unidade Atendimento"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "responsavel",
+   "fieldtype": "Link",
+   "label": "Responsável",
+   "options": "User"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Em análise técnica\nEm análise financeira\nEm análise jurídica\nAguardando comitê\nAprovada\nReprovada\nRevisão solicitada",
+   "in_list_view": 1,
+   "default": "Em análise técnica"
+  },
+  {
+   "fieldname": "decisao",
+   "fieldtype": "Select",
+   "label": "Decisão",
+   "options": "\nGo\nNo-Go\nAguardar\nRevisar",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sec_analises",
+   "fieldtype": "Section Break",
+   "label": "Análises"
+  },
+  {
+   "fieldname": "analise_tecnica",
+   "fieldtype": "Text",
+   "label": "Análise Técnica"
+  },
+  {
+   "fieldname": "analise_financeira",
+   "fieldtype": "Text",
+   "label": "Análise Financeira"
+  },
+  {
+   "fieldname": "analise_juridica",
+   "fieldtype": "Text",
+   "label": "Análise Jurídica"
+  },
+  {
+   "fieldname": "disponibilidade_cooperados",
+   "fieldtype": "Text",
+   "label": "Disponibilidade de Cooperados"
+  },
+  {
+   "fieldname": "sec_riscos",
+   "fieldtype": "Section Break",
+   "label": "Riscos e Margem"
+  },
+  {
+   "fieldname": "margem_estimativa",
+   "fieldtype": "Percent",
+   "label": "Margem Estimada (%)"
+  },
+  {
+   "fieldname": "risco_operacional",
+   "fieldtype": "Select",
+   "label": "Risco Operacional",
+   "options": "Baixo\nMédio\nAlto\nCrítico"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "risco_juridico",
+   "fieldtype": "Select",
+   "label": "Risco Jurídico",
+   "options": "Baixo\nMédio\nAlto\nCrítico"
+  },
+  {
+   "fieldname": "risco_financeiro",
+   "fieldtype": "Select",
+   "label": "Risco Financeiro",
+   "options": "Baixo\nMédio\nAlto\nCrítico"
+  },
+  {
+   "fieldname": "sec_decisao",
+   "fieldtype": "Section Break",
+   "label": "Parecer e Decisão"
+  },
+  {
+   "fieldname": "parecer_final",
+   "fieldtype": "Text",
+   "label": "Parecer Final"
+  },
+  {
+   "fieldname": "data_decisao",
+   "fieldtype": "Date",
+   "label": "Data da Decisão"
+  },
+  {
+   "fieldname": "aprovador",
+   "fieldtype": "Link",
+   "label": "Aprovador",
+   "options": "User"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Analise Viabilidade",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Juridico",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Financeiro",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "allow_workflow": 1
+}

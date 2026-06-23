@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cooperado",
+  "servico",
+  "data",
+  "quantidade",
+  "unidade_medida",
+  "valor_unitario",
+  "valor_total",
+  "status_validacao",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "cooperado",
+   "fieldtype": "Link",
+   "label": "Cooperado",
+   "options": "Cooperado Mobilizado",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "servico",
+   "fieldtype": "Data",
+   "label": "Serviço",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "data",
+   "fieldtype": "Date",
+   "label": "Data",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "quantidade",
+   "fieldtype": "Float",
+   "label": "Quantidade",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "unidade_medida",
+   "fieldtype": "Select",
+   "label": "Unidade",
+   "options": "Hora\nPlantão\nAtendimento\nMensalidade\nPacote\nOutro"
+  },
+  {
+   "fieldname": "valor_unitario",
+   "fieldtype": "Currency",
+   "label": "Valor Unitário (R$)"
+  },
+  {
+   "fieldname": "valor_total",
+   "fieldtype": "Currency",
+   "label": "Valor Total (R$)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status_validacao",
+   "fieldtype": "Select",
+   "label": "Status de Validação",
+   "options": "Registrado\nEm conferência\nValidado\nContestado\nGlosado\nCorrigido",
+   "in_list_view": 1,
+   "default": "Registrado"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Item Producao",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "permissions": []
+}

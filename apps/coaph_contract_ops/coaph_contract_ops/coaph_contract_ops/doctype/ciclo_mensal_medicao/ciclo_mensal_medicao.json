@@ -1,0 +1,303 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "contrato",
+  "competencia",
+  "mes",
+  "ano",
+  "cb1",
+  "contratante",
+  "unidade_atendimento",
+  "responsavel_operacional",
+  "responsavel_financeiro",
+  "sec_status",
+  "status",
+  "data_abertura",
+  "data_fechamento_prevista",
+  "data_fechamento_real",
+  "sec_valores",
+  "valor_producao",
+  "valor_faturado",
+  "cb2",
+  "valor_recebido",
+  "valor_repasse",
+  "sec_itens",
+  "itens_producao",
+  "sec_obs",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "CICLO-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "contrato",
+   "fieldtype": "Link",
+   "label": "Contrato 360",
+   "options": "Contrato 360",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "competencia",
+   "fieldtype": "Data",
+   "label": "Competência (MM/AAAA)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "mes",
+   "fieldtype": "Int",
+   "label": "Mês"
+  },
+  {
+   "fieldname": "ano",
+   "fieldtype": "Int",
+   "label": "Ano"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contratante",
+   "fieldtype": "Link",
+   "label": "Contratante",
+   "options": "Contratante COAPH"
+  },
+  {
+   "fieldname": "unidade_atendimento",
+   "fieldtype": "Link",
+   "label": "Unidade de Atendimento",
+   "options": "Unidade Atendimento"
+  },
+  {
+   "fieldname": "responsavel_operacional",
+   "fieldtype": "Link",
+   "label": "Responsável Operacional",
+   "options": "User"
+  },
+  {
+   "fieldname": "responsavel_financeiro",
+   "fieldtype": "Link",
+   "label": "Responsável Financeiro",
+   "options": "User"
+  },
+  {
+   "fieldname": "sec_status",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Competência aberta\nProdução em registro\nProdução em conferência\nProdução fechada\nProdução validada\nPrazo de contestação\nLiberada para faturamento\nNF emitida\nAguardando recebimento\nRecebida\nRepasse calculado\nDemonstrativos publicados\nRepasse executado\nCompetência encerrada\nBloqueada",
+   "in_list_view": 1,
+   "default": "Competência aberta"
+  },
+  {
+   "fieldname": "data_abertura",
+   "fieldtype": "Date",
+   "label": "Data de Abertura"
+  },
+  {
+   "fieldname": "data_fechamento_prevista",
+   "fieldtype": "Date",
+   "label": "Fechamento Previsto"
+  },
+  {
+   "fieldname": "data_fechamento_real",
+   "fieldtype": "Date",
+   "label": "Fechamento Real"
+  },
+  {
+   "fieldname": "sec_valores",
+   "fieldtype": "Section Break",
+   "label": "Valores Consolidados"
+  },
+  {
+   "fieldname": "valor_producao",
+   "fieldtype": "Currency",
+   "label": "Valor de Produção (R$)"
+  },
+  {
+   "fieldname": "valor_faturado",
+   "fieldtype": "Currency",
+   "label": "Valor Faturado (R$)"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_recebido",
+   "fieldtype": "Currency",
+   "label": "Valor Recebido (R$)"
+  },
+  {
+   "fieldname": "valor_repasse",
+   "fieldtype": "Currency",
+   "label": "Valor de Repasse (R$)"
+  },
+  {
+   "fieldname": "sec_itens",
+   "fieldtype": "Section Break",
+   "label": "Itens de Produção"
+  },
+  {
+   "fieldname": "itens_producao",
+   "fieldtype": "Table",
+   "label": "Itens de Produção",
+   "options": "Item Producao"
+  },
+  {
+   "fieldname": "sec_obs",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Ciclo Mensal Medicao",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Financeiro",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Mobilizacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "competencia",
+ "show_title_field_in_link": 1,
+ "allow_workflow": 1
+}

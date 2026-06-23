@@ -1,0 +1,357 @@
+[
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Abrir prazo de contestação",
+  "workflow_action_name": "Abrir prazo de contestação"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Aguardar recebimento",
+  "workflow_action_name": "Aguardar recebimento"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Aguardar resultado",
+  "workflow_action_name": "Aguardar resultado"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Analisar",
+  "workflow_action_name": "Analisar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Analisar renovação",
+  "workflow_action_name": "Analisar renovação"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Aprovar",
+  "workflow_action_name": "Aprovar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Aprovar avanço",
+  "workflow_action_name": "Aprovar avanço"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Aprovar juridicamente",
+  "workflow_action_name": "Aprovar juridicamente"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Ativar operação regular",
+  "workflow_action_name": "Ativar operação regular"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Bloquear",
+  "workflow_action_name": "Bloquear"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Calcular repasse",
+  "workflow_action_name": "Calcular repasse"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Cancelar",
+  "workflow_action_name": "Cancelar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Cancelar mobilização",
+  "workflow_action_name": "Cancelar mobilização"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Concluir análise financeira",
+  "workflow_action_name": "Concluir análise financeira"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Concluir análise técnica",
+  "workflow_action_name": "Concluir análise técnica"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Concluir onboarding",
+  "workflow_action_name": "Concluir onboarding"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Confirmar assinatura",
+  "workflow_action_name": "Confirmar assinatura"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Confirmar renovação",
+  "workflow_action_name": "Confirmar renovação"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Converter em disputa/proposta",
+  "workflow_action_name": "Converter em disputa/proposta"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Credenciar cooperados",
+  "workflow_action_name": "Credenciar cooperados"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Definir plano",
+  "workflow_action_name": "Definir plano"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Descartar",
+  "workflow_action_name": "Descartar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Dimensionar equipe",
+  "workflow_action_name": "Dimensionar equipe"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Disparar alerta 120",
+  "workflow_action_name": "Disparar alerta 120"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Disparar alerta 180",
+  "workflow_action_name": "Disparar alerta 180"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Disparar alerta 90",
+  "workflow_action_name": "Disparar alerta 90"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Elaborar minuta",
+  "workflow_action_name": "Elaborar minuta"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Elaborar proposta",
+  "workflow_action_name": "Elaborar proposta"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Emitir NF",
+  "workflow_action_name": "Emitir NF"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Encerrar",
+  "workflow_action_name": "Encerrar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Encerrar competência",
+  "workflow_action_name": "Encerrar competência"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Encerrar contrato",
+  "workflow_action_name": "Encerrar contrato"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Enviar ao comitê",
+  "workflow_action_name": "Enviar ao comitê"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Enviar para assinatura",
+  "workflow_action_name": "Enviar para assinatura"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Enviar para conferência",
+  "workflow_action_name": "Enviar para conferência"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Enviar para viabilidade",
+  "workflow_action_name": "Enviar para viabilidade"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Enviar proposta",
+  "workflow_action_name": "Enviar proposta"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Escalar para crítico",
+  "workflow_action_name": "Escalar para crítico"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Executar repasse",
+  "workflow_action_name": "Executar repasse"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Fechar produção",
+  "workflow_action_name": "Fechar produção"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Iniciar encerramento",
+  "workflow_action_name": "Iniciar encerramento"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Iniciar mobilização",
+  "workflow_action_name": "Iniciar mobilização"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Iniciar registro",
+  "workflow_action_name": "Iniciar registro"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Iniciar renovação",
+  "workflow_action_name": "Iniciar renovação"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Liberar operação",
+  "workflow_action_name": "Liberar operação"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Liberar operação assistida",
+  "workflow_action_name": "Liberar operação assistida"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Liberar para faturamento",
+  "workflow_action_name": "Liberar para faturamento"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Mobilizar cooperados",
+  "workflow_action_name": "Mobilizar cooperados"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Negociar",
+  "workflow_action_name": "Negociar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Normalizar",
+  "workflow_action_name": "Normalizar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Não renovar",
+  "workflow_action_name": "Não renovar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Parametrizar contrato",
+  "workflow_action_name": "Parametrizar contrato"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Preparar documentação",
+  "workflow_action_name": "Preparar documentação"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Publicar demonstrativos",
+  "workflow_action_name": "Publicar demonstrativos"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Qualificar",
+  "workflow_action_name": "Qualificar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Realizar kickoff",
+  "workflow_action_name": "Realizar kickoff"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Reanalisar",
+  "workflow_action_name": "Reanalisar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Reativar",
+  "workflow_action_name": "Reativar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Receber minuta",
+  "workflow_action_name": "Receber minuta"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Recusar contrato",
+  "workflow_action_name": "Recusar contrato"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Registrar",
+  "workflow_action_name": "Registrar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Registrar derrota",
+  "workflow_action_name": "Registrar derrota"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Registrar recebimento",
+  "workflow_action_name": "Registrar recebimento"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Registrar vitória",
+  "workflow_action_name": "Registrar vitória"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Reprovar",
+  "workflow_action_name": "Reprovar"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Retomar análise",
+  "workflow_action_name": "Retomar análise"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Sinalizar atenção",
+  "workflow_action_name": "Sinalizar atenção"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Solicitar ajustes",
+  "workflow_action_name": "Solicitar ajustes"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Solicitar revisão",
+  "workflow_action_name": "Solicitar revisão"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Suspender",
+  "workflow_action_name": "Suspender"
+ },
+ {
+  "doctype": "Workflow Action Master",
+  "name": "Validar produção",
+  "workflow_action_name": "Validar produção"
+ }
+]

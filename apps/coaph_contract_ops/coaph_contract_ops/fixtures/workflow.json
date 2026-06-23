@@ -1,0 +1,1129 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "Workflow Oportunidade COAPH",
+  "workflow_name": "Workflow Oportunidade COAPH",
+  "document_type": "Oportunidade COAPH",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "status",
+  "states": [
+   {
+    "state": "Demanda identificada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Oportunidade registrada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Oportunidade qualificada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em análise de viabilidade",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Aprovada para avanço",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Convertida em disputa/proposta",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Descartada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Demanda identificada",
+    "action": "Registrar",
+    "next_state": "Oportunidade registrada",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Oportunidade registrada",
+    "action": "Qualificar",
+    "next_state": "Oportunidade qualificada",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Oportunidade qualificada",
+    "action": "Enviar para viabilidade",
+    "next_state": "Em análise de viabilidade",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em análise de viabilidade",
+    "action": "Aprovar avanço",
+    "next_state": "Aprovada para avanço",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aprovada para avanço",
+    "action": "Converter em disputa/proposta",
+    "next_state": "Convertida em disputa/proposta",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Oportunidade registrada",
+    "action": "Descartar",
+    "next_state": "Descartada",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Oportunidade qualificada",
+    "action": "Descartar",
+    "next_state": "Descartada",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em análise de viabilidade",
+    "action": "Descartar",
+    "next_state": "Descartada",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "Workflow Analise Viabilidade",
+  "workflow_name": "Workflow Analise Viabilidade",
+  "document_type": "Analise Viabilidade",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "status",
+  "states": [
+   {
+    "state": "Em análise técnica",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em análise financeira",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em análise jurídica",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Aguardando comitê",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Aprovada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Reprovada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Revisão solicitada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Em análise técnica",
+    "action": "Concluir análise técnica",
+    "next_state": "Em análise financeira",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em análise financeira",
+    "action": "Concluir análise financeira",
+    "next_state": "Em análise jurídica",
+    "allowed": "SGC Financeiro",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em análise jurídica",
+    "action": "Enviar ao comitê",
+    "next_state": "Aguardando comitê",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aguardando comitê",
+    "action": "Aprovar",
+    "next_state": "Aprovada",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aguardando comitê",
+    "action": "Reprovar",
+    "next_state": "Reprovada",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aguardando comitê",
+    "action": "Solicitar revisão",
+    "next_state": "Revisão solicitada",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Revisão solicitada",
+    "action": "Retomar análise",
+    "next_state": "Em análise técnica",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "Workflow Disputa Proposta COAPH",
+  "workflow_name": "Workflow Disputa Proposta COAPH",
+  "document_type": "Disputa Proposta COAPH",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "status",
+  "states": [
+   {
+    "state": "Edital/BID recebido",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em análise",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Documentação em preparação",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Proposta em elaboração",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Proposta enviada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Aguardando resultado",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Vencida",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Perdida",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Cancelada",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Edital/BID recebido",
+    "action": "Analisar",
+    "next_state": "Em análise",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em análise",
+    "action": "Preparar documentação",
+    "next_state": "Documentação em preparação",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Documentação em preparação",
+    "action": "Elaborar proposta",
+    "next_state": "Proposta em elaboração",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Proposta em elaboração",
+    "action": "Enviar proposta",
+    "next_state": "Proposta enviada",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Proposta enviada",
+    "action": "Aguardar resultado",
+    "next_state": "Aguardando resultado",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aguardando resultado",
+    "action": "Registrar vitória",
+    "next_state": "Vencida",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aguardando resultado",
+    "action": "Registrar derrota",
+    "next_state": "Perdida",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em análise",
+    "action": "Cancelar",
+    "next_state": "Cancelada",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aguardando resultado",
+    "action": "Cancelar",
+    "next_state": "Cancelada",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "Workflow Formalizacao Contratual",
+  "workflow_name": "Workflow Formalizacao Contratual",
+  "document_type": "Formalizacao Contratual",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "status",
+  "states": [
+   {
+    "state": "Aguardando minuta",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Minuta em análise jurídica",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Minuta em negociação",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Ajustes solicitados",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Aprovada juridicamente",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em assinatura",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Contrato assinado",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Contrato recusado",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Cancelada",
+    "doc_status": "0",
+    "allow_edit": "SGC Juridico",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Aguardando minuta",
+    "action": "Receber minuta",
+    "next_state": "Minuta em análise jurídica",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Minuta em análise jurídica",
+    "action": "Negociar",
+    "next_state": "Minuta em negociação",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Minuta em negociação",
+    "action": "Solicitar ajustes",
+    "next_state": "Ajustes solicitados",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ajustes solicitados",
+    "action": "Reanalisar",
+    "next_state": "Minuta em análise jurídica",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Minuta em negociação",
+    "action": "Aprovar juridicamente",
+    "next_state": "Aprovada juridicamente",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aprovada juridicamente",
+    "action": "Enviar para assinatura",
+    "next_state": "Em assinatura",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em assinatura",
+    "action": "Confirmar assinatura",
+    "next_state": "Contrato assinado",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em assinatura",
+    "action": "Recusar contrato",
+    "next_state": "Contrato recusado",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Minuta em análise jurídica",
+    "action": "Cancelar",
+    "next_state": "Cancelada",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "Workflow Contrato 360",
+  "workflow_name": "Workflow Contrato 360",
+  "document_type": "Contrato 360",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "status_contrato",
+  "states": [
+   {
+    "state": "Em formalização",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em mobilização",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Operação assistida",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Ativo",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Ativo com atenção",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Crítico",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em renovação",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Suspenso",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em encerramento",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Encerrado",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Em formalização",
+    "action": "Iniciar mobilização",
+    "next_state": "Em mobilização",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em mobilização",
+    "action": "Liberar operação assistida",
+    "next_state": "Operação assistida",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Operação assistida",
+    "action": "Ativar operação regular",
+    "next_state": "Ativo",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ativo",
+    "action": "Sinalizar atenção",
+    "next_state": "Ativo com atenção",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ativo com atenção",
+    "action": "Escalar para crítico",
+    "next_state": "Crítico",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ativo com atenção",
+    "action": "Normalizar",
+    "next_state": "Ativo",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Crítico",
+    "action": "Normalizar",
+    "next_state": "Ativo com atenção",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ativo",
+    "action": "Iniciar renovação",
+    "next_state": "Em renovação",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ativo com atenção",
+    "action": "Iniciar renovação",
+    "next_state": "Em renovação",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em renovação",
+    "action": "Iniciar encerramento",
+    "next_state": "Em encerramento",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ativo",
+    "action": "Suspender",
+    "next_state": "Suspenso",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Suspenso",
+    "action": "Reativar",
+    "next_state": "Ativo",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em encerramento",
+    "action": "Encerrar contrato",
+    "next_state": "Encerrado",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "Workflow Plano Mobilizacao",
+  "workflow_name": "Workflow Plano Mobilizacao",
+  "document_type": "Plano Mobilizacao",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "status",
+  "states": [
+   {
+    "state": "Aguardando kickoff",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Kickoff interno realizado",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Plano de mobilização definido",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Contrato parametrizado",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Equipe dimensionada",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Cooperados em mobilização",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Cooperados credenciados",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Onboarding concluído",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Operação liberada",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Mobilização cancelada",
+    "doc_status": "0",
+    "allow_edit": "SGC Mobilizacao",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Aguardando kickoff",
+    "action": "Realizar kickoff",
+    "next_state": "Kickoff interno realizado",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Kickoff interno realizado",
+    "action": "Definir plano",
+    "next_state": "Plano de mobilização definido",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Plano de mobilização definido",
+    "action": "Parametrizar contrato",
+    "next_state": "Contrato parametrizado",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Contrato parametrizado",
+    "action": "Dimensionar equipe",
+    "next_state": "Equipe dimensionada",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Equipe dimensionada",
+    "action": "Mobilizar cooperados",
+    "next_state": "Cooperados em mobilização",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Cooperados em mobilização",
+    "action": "Credenciar cooperados",
+    "next_state": "Cooperados credenciados",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Cooperados credenciados",
+    "action": "Concluir onboarding",
+    "next_state": "Onboarding concluído",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Onboarding concluído",
+    "action": "Liberar operação",
+    "next_state": "Operação liberada",
+    "allowed": "SGC Mobilizacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aguardando kickoff",
+    "action": "Cancelar mobilização",
+    "next_state": "Mobilização cancelada",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "Workflow Ciclo Mensal Medicao",
+  "workflow_name": "Workflow Ciclo Mensal Medicao",
+  "document_type": "Ciclo Mensal Medicao",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "status",
+  "states": [
+   {
+    "state": "Competência aberta",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Produção em registro",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Produção em conferência",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Produção fechada",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Produção validada",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Prazo de contestação",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Liberada para faturamento",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "NF emitida",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Aguardando recebimento",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Recebida",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Repasse calculado",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Demonstrativos publicados",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Repasse executado",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Competência encerrada",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Bloqueada",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Competência aberta",
+    "action": "Iniciar registro",
+    "next_state": "Produção em registro",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Produção em registro",
+    "action": "Enviar para conferência",
+    "next_state": "Produção em conferência",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Produção em conferência",
+    "action": "Fechar produção",
+    "next_state": "Produção fechada",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Produção fechada",
+    "action": "Validar produção",
+    "next_state": "Produção validada",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Produção validada",
+    "action": "Abrir prazo de contestação",
+    "next_state": "Prazo de contestação",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Prazo de contestação",
+    "action": "Liberar para faturamento",
+    "next_state": "Liberada para faturamento",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Produção validada",
+    "action": "Liberar para faturamento",
+    "next_state": "Liberada para faturamento",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Liberada para faturamento",
+    "action": "Emitir NF",
+    "next_state": "NF emitida",
+    "allowed": "SGC Financeiro",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "NF emitida",
+    "action": "Aguardar recebimento",
+    "next_state": "Aguardando recebimento",
+    "allowed": "SGC Financeiro",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Aguardando recebimento",
+    "action": "Registrar recebimento",
+    "next_state": "Recebida",
+    "allowed": "SGC Financeiro",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Recebida",
+    "action": "Calcular repasse",
+    "next_state": "Repasse calculado",
+    "allowed": "SGC Financeiro",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Repasse calculado",
+    "action": "Publicar demonstrativos",
+    "next_state": "Demonstrativos publicados",
+    "allowed": "SGC Financeiro",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Demonstrativos publicados",
+    "action": "Executar repasse",
+    "next_state": "Repasse executado",
+    "allowed": "SGC Financeiro",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Repasse executado",
+    "action": "Encerrar competência",
+    "next_state": "Competência encerrada",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Produção em conferência",
+    "action": "Bloquear",
+    "next_state": "Bloqueada",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   }
+  ]
+ },
+ {
+  "doctype": "Workflow",
+  "name": "Workflow Renovacao Contratual",
+  "workflow_name": "Workflow Renovacao Contratual",
+  "document_type": "Renovacao Contratual",
+  "is_active": 1,
+  "override_status": 0,
+  "send_email_alert": 0,
+  "workflow_state_field": "status",
+  "states": [
+   {
+    "state": "Monitorando vigência",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Alerta 180 dias",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Alerta 120 dias",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Alerta 90 dias",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em análise de renovação",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Em negociação",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Minuta de renovação",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Renovado",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Não renovado",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Encerrado",
+    "doc_status": "0",
+    "allow_edit": "SGC Comercial",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Monitorando vigência",
+    "action": "Disparar alerta 180",
+    "next_state": "Alerta 180 dias",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Alerta 180 dias",
+    "action": "Disparar alerta 120",
+    "next_state": "Alerta 120 dias",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Alerta 120 dias",
+    "action": "Disparar alerta 90",
+    "next_state": "Alerta 90 dias",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Alerta 90 dias",
+    "action": "Analisar renovação",
+    "next_state": "Em análise de renovação",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em análise de renovação",
+    "action": "Negociar",
+    "next_state": "Em negociação",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em negociação",
+    "action": "Elaborar minuta",
+    "next_state": "Minuta de renovação",
+    "allowed": "SGC Juridico",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Minuta de renovação",
+    "action": "Confirmar renovação",
+    "next_state": "Renovado",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em análise de renovação",
+    "action": "Não renovar",
+    "next_state": "Não renovado",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Em negociação",
+    "action": "Encerrar",
+    "next_state": "Encerrado",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   }
+  ]
+ }
+]

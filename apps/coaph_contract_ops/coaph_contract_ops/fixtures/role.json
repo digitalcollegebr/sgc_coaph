@@ -1,0 +1,56 @@
+[
+ {
+  "doctype": "Role",
+  "name": "SGC Administrador",
+  "role_name": "SGC Administrador",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "SGC Diretoria",
+  "role_name": "SGC Diretoria",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "SGC Comercial",
+  "role_name": "SGC Comercial",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "SGC Juridico",
+  "role_name": "SGC Juridico",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "SGC Mobilizacao",
+  "role_name": "SGC Mobilizacao",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "SGC Operacao",
+  "role_name": "SGC Operacao",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "SGC Financeiro",
+  "role_name": "SGC Financeiro",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "SGC RH Cooperados",
+  "role_name": "SGC RH Cooperados",
+  "desk_access": 1
+ },
+ {
+  "doctype": "Role",
+  "name": "SGC Consulta",
+  "role_name": "SGC Consulta",
+  "desk_access": 1
+ }
+]

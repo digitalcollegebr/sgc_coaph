@@ -1,0 +1,256 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "nome_cooperado",
+  "cpf",
+  "especialidade",
+  "registro_profissional",
+  "cb1",
+  "contrato",
+  "plano_mobilizacao",
+  "status_credenciamento",
+  "sec_datas",
+  "data_solicitacao",
+  "data_credenciamento",
+  "apto_para_operacao",
+  "cb2",
+  "treinamento_realizado",
+  "data_treinamento",
+  "sec_obs",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "COOP-.#####"
+  },
+  {
+   "fieldname": "nome_cooperado",
+   "fieldtype": "Data",
+   "label": "Nome do Cooperado",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cpf",
+   "fieldtype": "Data",
+   "label": "CPF"
+  },
+  {
+   "fieldname": "especialidade",
+   "fieldtype": "Data",
+   "label": "Especialidade",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "registro_profissional",
+   "fieldtype": "Data",
+   "label": "Registro Profissional"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contrato",
+   "fieldtype": "Link",
+   "label": "Contrato 360",
+   "options": "Contrato 360",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "plano_mobilizacao",
+   "fieldtype": "Link",
+   "label": "Plano de Mobilização",
+   "options": "Plano Mobilizacao"
+  },
+  {
+   "fieldname": "status_credenciamento",
+   "fieldtype": "Select",
+   "label": "Status do Credenciamento",
+   "options": "Solicitado\nEm análise\nDocumentação pendente\nCredenciado\nTreinamento pendente\nApto\nInativo\nSubstituído",
+   "in_list_view": 1,
+   "default": "Solicitado"
+  },
+  {
+   "fieldname": "sec_datas",
+   "fieldtype": "Section Break",
+   "label": "Credenciamento e Onboarding"
+  },
+  {
+   "fieldname": "data_solicitacao",
+   "fieldtype": "Date",
+   "label": "Data da Solicitação"
+  },
+  {
+   "fieldname": "data_credenciamento",
+   "fieldtype": "Date",
+   "label": "Data do Credenciamento"
+  },
+  {
+   "fieldname": "apto_para_operacao",
+   "fieldtype": "Check",
+   "label": "Apto para Operação"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "treinamento_realizado",
+   "fieldtype": "Check",
+   "label": "Onboarding Cooperativo Realizado"
+  },
+  {
+   "fieldname": "data_treinamento",
+   "fieldtype": "Date",
+   "label": "Data do Onboarding"
+  },
+  {
+   "fieldname": "sec_obs",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Cooperado Mobilizado",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Mobilizacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC RH Cooperados",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "nome_cooperado",
+ "show_title_field_in_link": 1
+}

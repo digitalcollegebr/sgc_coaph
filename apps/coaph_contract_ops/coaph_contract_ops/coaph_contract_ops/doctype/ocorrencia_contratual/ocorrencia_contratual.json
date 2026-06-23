@@ -1,0 +1,266 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "contrato",
+  "ciclo_mensal",
+  "tipo_ocorrencia",
+  "cb1",
+  "criticidade",
+  "status",
+  "responsavel",
+  "sec_desc",
+  "descricao",
+  "impacto",
+  "data_abertura",
+  "cb2",
+  "prazo_resolucao",
+  "data_resolucao",
+  "solucao",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "OCOR-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "contrato",
+   "fieldtype": "Link",
+   "label": "Contrato 360",
+   "options": "Contrato 360",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ciclo_mensal",
+   "fieldtype": "Link",
+   "label": "Ciclo Mensal",
+   "options": "Ciclo Mensal Medicao"
+  },
+  {
+   "fieldname": "tipo_ocorrencia",
+   "fieldtype": "Select",
+   "label": "Tipo de Ocorrência",
+   "options": "Operacional\nFinanceira\nJurídica\nCliente\nCooperado\nSLA\nDocumental\nSistema\nOutro",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "criticidade",
+   "fieldtype": "Select",
+   "label": "Criticidade",
+   "options": "Baixa\nMédia\nAlta\nCrítica",
+   "in_list_view": 1,
+   "default": "Média"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aberta\nEm análise\nEm tratamento\nAguardando terceiro\nResolvida\nCancelada",
+   "in_list_view": 1,
+   "default": "Aberta"
+  },
+  {
+   "fieldname": "responsavel",
+   "fieldtype": "Link",
+   "label": "Responsável",
+   "options": "User"
+  },
+  {
+   "fieldname": "sec_desc",
+   "fieldtype": "Section Break",
+   "label": "Descrição e Tratamento"
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Text",
+   "label": "Descrição"
+  },
+  {
+   "fieldname": "impacto",
+   "fieldtype": "Small Text",
+   "label": "Impacto"
+  },
+  {
+   "fieldname": "data_abertura",
+   "fieldtype": "Date",
+   "label": "Data de Abertura"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "prazo_resolucao",
+   "fieldtype": "Date",
+   "label": "Prazo de Resolução"
+  },
+  {
+   "fieldname": "data_resolucao",
+   "fieldtype": "Date",
+   "label": "Data de Resolução"
+  },
+  {
+   "fieldname": "solucao",
+   "fieldtype": "Text",
+   "label": "Solução"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Ocorrencia Contratual",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Juridico",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Financeiro",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Mobilizacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field"
+}

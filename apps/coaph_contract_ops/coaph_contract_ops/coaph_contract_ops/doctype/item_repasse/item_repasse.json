@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "cooperado",
+  "servico",
+  "quantidade",
+  "valor_bruto",
+  "descontos",
+  "acrescimos",
+  "valor_liquido",
+  "status",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "cooperado",
+   "fieldtype": "Link",
+   "label": "Cooperado",
+   "options": "Cooperado Mobilizado",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "servico",
+   "fieldtype": "Data",
+   "label": "Serviço",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "quantidade",
+   "fieldtype": "Float",
+   "label": "Quantidade",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "valor_bruto",
+   "fieldtype": "Currency",
+   "label": "Valor Bruto (R$)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "descontos",
+   "fieldtype": "Currency",
+   "label": "Descontos (R$)"
+  },
+  {
+   "fieldname": "acrescimos",
+   "fieldtype": "Currency",
+   "label": "Acréscimos (R$)"
+  },
+  {
+   "fieldname": "valor_liquido",
+   "fieldtype": "Currency",
+   "label": "Valor Líquido (R$)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Calculado\nConferido\nDemonstrativo publicado\nPago\nBloqueado\nContestado",
+   "in_list_view": 1,
+   "default": "Calculado"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Small Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Item Repasse",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "permissions": []
+}

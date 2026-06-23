@@ -1,0 +1,219 @@
+# =============================================================================
+# SGC COAPH — Stack de produção (Docker Compose v2)
+#
+# Esta stack USA a imagem customizada já publicada no Docker Hub:
+#   ${CUSTOM_IMAGE}:${CUSTOM_TAG}
+# NÃO há build aqui — o servidor apenas faz `docker compose pull` + `up -d`.
+#
+# Padrão baseado no frappe_docker oficial:
+#   - configurator: job efêmero que escreve common_site_config.json (db/redis).
+#   - backend / websocket / scheduler / queue-short / queue-long: usam a imagem custom.
+#   - frontend: nginx oficial do frappe que serve assets e faz proxy.
+#   - db (mariadb 10.6), redis-cache, redis-queue: serviços de apoio.
+#
+# Todas as configurações sensíveis vêm do .env (ver .env.example).
+# Use sempre: `docker compose -f compose.yaml --env-file .env <comando>`.
+# =============================================================================
+
+x-customizable-image: &customizable_image
+  # Imagem customizada publicada (ERPNext + coaph_contract_ops).
+  image: ${CUSTOM_IMAGE}:${CUSTOM_TAG}
+  pull_policy: always
+  restart: unless-stopped
+
+x-backend-defaults: &backend_defaults
+  <<: *customizable_image
+  volumes:
+    - sites:/home/frappe/frappe-bench/sites
+  environment:
+    TZ: ${TIMEZONE}
+
+services:
+
+  # ---------------------------------------------------------------------------
+  # Job efêmero: configura common_site_config.json (hosts de db e redis).
+  # Roda uma vez, escreve a config e sai. Os demais serviços dependem dele.
+  # ---------------------------------------------------------------------------
+  configurator:
+    <<: *backend_defaults
+    restart: "no"
+    entrypoint:
+      - bash
+      - -c
+    command:
+      - >
+        ls -1 apps > sites/apps.txt;
+        bench set-config -g db_host $$DB_HOST;
+        bench set-config -gp db_port $$DB_PORT;
+        bench set-config -g redis_cache "redis://$$REDIS_CACHE";
+        bench set-config -g redis_queue "redis://$$REDIS_QUEUE";
+        bench set-config -g redis_socketio "redis://$$REDIS_QUEUE";
+        bench set-config -gp socketio_port $$SOCKETIO_PORT;
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      REDIS_CACHE: ${REDIS_CACHE}
+      REDIS_QUEUE: ${REDIS_QUEUE}
+      SOCKETIO_PORT: ${SOCKETIO_PORT}
+      TZ: ${TIMEZONE}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis-cache:
+        condition: service_started
+      redis-queue:
+        condition: service_started
+
+  # ---------------------------------------------------------------------------
+  # Backend: processo gunicorn que atende as requisições do Frappe.
+  # ---------------------------------------------------------------------------
+  backend:
+    <<: *backend_defaults
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  # ---------------------------------------------------------------------------
+  # Frontend: nginx oficial do frappe (serve assets + proxy para backend/websocket).
+  # Expõe a porta HTTP do servidor (8081, pois 8080 está ocupada).
+  # ---------------------------------------------------------------------------
+  frontend:
+    <<: *customizable_image
+    command:
+      - nginx-entrypoint.sh
+    environment:
+      BACKEND: backend:8000
+      SOCKETIO: websocket:${SOCKETIO_PORT}
+      FRAPPE_SITE_NAME_HEADER: ${FRAPPE_SITE_NAME_HEADER}
+      UPSTREAM_REAL_IP_ADDRESS: 127.0.0.1
+      UPSTREAM_REAL_IP_HEADER: X-Forwarded-For
+      UPSTREAM_REAL_IP_RECURSIVE: "off"
+      PROXY_READ_TIMEOUT: 120
+      CLIENT_MAX_BODY_SIZE: 50m
+      TZ: ${TIMEZONE}
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    depends_on:
+      backend:
+        condition: service_started
+      websocket:
+        condition: service_started
+    ports:
+      - "${HTTP_PORT}:8080"
+      - "${HTTPS_PORT}:8443"
+
+  # ---------------------------------------------------------------------------
+  # Websocket: socket.io (notificações em tempo real).
+  # ---------------------------------------------------------------------------
+  websocket:
+    <<: *customizable_image
+    command:
+      - node
+      - /home/frappe/frappe-bench/apps/frappe/socketio.js
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+    environment:
+      TZ: ${TIMEZONE}
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  # ---------------------------------------------------------------------------
+  # Scheduler: enfileira jobs agendados (cron interno do Frappe).
+  # ---------------------------------------------------------------------------
+  scheduler:
+    <<: *backend_defaults
+    command:
+      - bench
+      - schedule
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  # ---------------------------------------------------------------------------
+  # Worker fila curta (jobs rápidos).
+  # ---------------------------------------------------------------------------
+  queue-short:
+    <<: *backend_defaults
+    command:
+      - bench
+      - worker
+      - --queue
+      - short,default
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  # ---------------------------------------------------------------------------
+  # Worker fila longa (jobs demorados).
+  # ---------------------------------------------------------------------------
+  queue-long:
+    <<: *backend_defaults
+    command:
+      - bench
+      - worker
+      - --queue
+      - long,default,short
+    depends_on:
+      configurator:
+        condition: service_completed_successfully
+
+  # ---------------------------------------------------------------------------
+  # Banco de dados: MariaDB 10.6
+  # ---------------------------------------------------------------------------
+  db:
+    image: mariadb:10.6
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      TZ: ${TIMEZONE}
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'mariadb-admin ping -h localhost --password="$$MARIADB_ROOT_PASSWORD" || mysqladmin ping -h localhost --password="$$MYSQL_ROOT_PASSWORD"'
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # ---------------------------------------------------------------------------
+  # Redis: cache
+  # ---------------------------------------------------------------------------
+  redis-cache:
+    image: redis:6.2-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-cache-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ---------------------------------------------------------------------------
+  # Redis: fila (queue + socketio)
+  # ---------------------------------------------------------------------------
+  redis-queue:
+    image: redis:6.2-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-queue-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  sites:
+  db-data:
+  redis-cache-data:
+  redis-queue-data:

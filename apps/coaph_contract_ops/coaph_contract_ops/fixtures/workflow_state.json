@@ -1,0 +1,452 @@
+[
+ {
+  "doctype": "Workflow State",
+  "name": "Aguardando comitê",
+  "workflow_state_name": "Aguardando comitê",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Aguardando kickoff",
+  "workflow_state_name": "Aguardando kickoff",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Aguardando minuta",
+  "workflow_state_name": "Aguardando minuta",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Aguardando recebimento",
+  "workflow_state_name": "Aguardando recebimento",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Aguardando resultado",
+  "workflow_state_name": "Aguardando resultado",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Ajustes solicitados",
+  "workflow_state_name": "Ajustes solicitados",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Alerta 120 dias",
+  "workflow_state_name": "Alerta 120 dias",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Alerta 180 dias",
+  "workflow_state_name": "Alerta 180 dias",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Alerta 90 dias",
+  "workflow_state_name": "Alerta 90 dias",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Aprovada",
+  "workflow_state_name": "Aprovada",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Aprovada juridicamente",
+  "workflow_state_name": "Aprovada juridicamente",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Aprovada para avanço",
+  "workflow_state_name": "Aprovada para avanço",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Ativo",
+  "workflow_state_name": "Ativo",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Ativo com atenção",
+  "workflow_state_name": "Ativo com atenção",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Bloqueada",
+  "workflow_state_name": "Bloqueada",
+  "style": "Danger"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Cancelada",
+  "workflow_state_name": "Cancelada",
+  "style": "Danger"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Competência aberta",
+  "workflow_state_name": "Competência aberta",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Competência encerrada",
+  "workflow_state_name": "Competência encerrada",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Contrato assinado",
+  "workflow_state_name": "Contrato assinado",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Contrato parametrizado",
+  "workflow_state_name": "Contrato parametrizado",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Contrato recusado",
+  "workflow_state_name": "Contrato recusado",
+  "style": "Danger"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Convertida em disputa/proposta",
+  "workflow_state_name": "Convertida em disputa/proposta",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Cooperados credenciados",
+  "workflow_state_name": "Cooperados credenciados",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Cooperados em mobilização",
+  "workflow_state_name": "Cooperados em mobilização",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Crítico",
+  "workflow_state_name": "Crítico",
+  "style": "Danger"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Demanda identificada",
+  "workflow_state_name": "Demanda identificada",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Demonstrativos publicados",
+  "workflow_state_name": "Demonstrativos publicados",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Descartada",
+  "workflow_state_name": "Descartada",
+  "style": "Danger"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Documentação em preparação",
+  "workflow_state_name": "Documentação em preparação",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Edital/BID recebido",
+  "workflow_state_name": "Edital/BID recebido",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em análise",
+  "workflow_state_name": "Em análise",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em análise de renovação",
+  "workflow_state_name": "Em análise de renovação",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em análise de viabilidade",
+  "workflow_state_name": "Em análise de viabilidade",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em análise financeira",
+  "workflow_state_name": "Em análise financeira",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em análise jurídica",
+  "workflow_state_name": "Em análise jurídica",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em análise técnica",
+  "workflow_state_name": "Em análise técnica",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em assinatura",
+  "workflow_state_name": "Em assinatura",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em encerramento",
+  "workflow_state_name": "Em encerramento",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em formalização",
+  "workflow_state_name": "Em formalização",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em mobilização",
+  "workflow_state_name": "Em mobilização",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em negociação",
+  "workflow_state_name": "Em negociação",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Em renovação",
+  "workflow_state_name": "Em renovação",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Encerrado",
+  "workflow_state_name": "Encerrado",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Equipe dimensionada",
+  "workflow_state_name": "Equipe dimensionada",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Kickoff interno realizado",
+  "workflow_state_name": "Kickoff interno realizado",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Liberada para faturamento",
+  "workflow_state_name": "Liberada para faturamento",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Minuta de renovação",
+  "workflow_state_name": "Minuta de renovação",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Minuta em análise jurídica",
+  "workflow_state_name": "Minuta em análise jurídica",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Minuta em negociação",
+  "workflow_state_name": "Minuta em negociação",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Mobilização cancelada",
+  "workflow_state_name": "Mobilização cancelada",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Monitorando vigência",
+  "workflow_state_name": "Monitorando vigência",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "NF emitida",
+  "workflow_state_name": "NF emitida",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Não renovado",
+  "workflow_state_name": "Não renovado",
+  "style": "Danger"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Onboarding concluído",
+  "workflow_state_name": "Onboarding concluído",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Operação assistida",
+  "workflow_state_name": "Operação assistida",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Operação liberada",
+  "workflow_state_name": "Operação liberada",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Oportunidade qualificada",
+  "workflow_state_name": "Oportunidade qualificada",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Oportunidade registrada",
+  "workflow_state_name": "Oportunidade registrada",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Perdida",
+  "workflow_state_name": "Perdida",
+  "style": "Danger"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Plano de mobilização definido",
+  "workflow_state_name": "Plano de mobilização definido",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Prazo de contestação",
+  "workflow_state_name": "Prazo de contestação",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Produção em conferência",
+  "workflow_state_name": "Produção em conferência",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Produção em registro",
+  "workflow_state_name": "Produção em registro",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Produção fechada",
+  "workflow_state_name": "Produção fechada",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Produção validada",
+  "workflow_state_name": "Produção validada",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Proposta em elaboração",
+  "workflow_state_name": "Proposta em elaboração",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Proposta enviada",
+  "workflow_state_name": "Proposta enviada",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Recebida",
+  "workflow_state_name": "Recebida",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Renovado",
+  "workflow_state_name": "Renovado",
+  "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Repasse calculado",
+  "workflow_state_name": "Repasse calculado",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Repasse executado",
+  "workflow_state_name": "Repasse executado",
+  "style": "Primary"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Reprovada",
+  "workflow_state_name": "Reprovada",
+  "style": "Danger"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Revisão solicitada",
+  "workflow_state_name": "Revisão solicitada",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Suspenso",
+  "workflow_state_name": "Suspenso",
+  "style": "Warning"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Vencida",
+  "workflow_state_name": "Vencida",
+  "style": "Success"
+ }
+]

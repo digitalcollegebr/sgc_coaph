@@ -1,0 +1,5 @@
+Projeto interno COAPH. Uso restrito.
+
+Este software é um projeto interno da COAPH e não se destina à comercialização.
+Construído sobre Frappe Framework e ERPNext (licenças próprias dos respectivos
+projetos, não modificadas por este app).

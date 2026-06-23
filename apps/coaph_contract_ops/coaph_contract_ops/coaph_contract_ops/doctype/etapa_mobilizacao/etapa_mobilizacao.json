@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "etapa",
+  "area_responsavel",
+  "responsavel",
+  "status",
+  "data_inicio_prevista",
+  "data_fim_prevista",
+  "data_conclusao",
+  "sla_dias",
+  "criterio_conclusao",
+  "descricao",
+  "comentario",
+  "anexo"
+ ],
+ "fields": [
+  {
+   "fieldname": "etapa",
+   "fieldtype": "Data",
+   "label": "Etapa",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "area_responsavel",
+   "fieldtype": "Select",
+   "label": "Área Responsável",
+   "options": "Comercial\nJurídico\nOperação\nRH\nFinanceiro\nDiretoria\nTI",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "responsavel",
+   "fieldtype": "Link",
+   "label": "Responsável",
+   "options": "User",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Não iniciado\nEm andamento\nConcluído\nAtrasado\nBloqueado",
+   "in_list_view": 1,
+   "default": "Não iniciado"
+  },
+  {
+   "fieldname": "data_inicio_prevista",
+   "fieldtype": "Date",
+   "label": "Início Previsto"
+  },
+  {
+   "fieldname": "data_fim_prevista",
+   "fieldtype": "Date",
+   "label": "Fim Previsto",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "data_conclusao",
+   "fieldtype": "Date",
+   "label": "Conclusão"
+  },
+  {
+   "fieldname": "sla_dias",
+   "fieldtype": "Int",
+   "label": "SLA (dias)"
+  },
+  {
+   "fieldname": "criterio_conclusao",
+   "fieldtype": "Small Text",
+   "label": "Critério de Conclusão"
+  },
+  {
+   "fieldname": "descricao",
+   "fieldtype": "Small Text",
+   "label": "Descrição"
+  },
+  {
+   "fieldname": "comentario",
+   "fieldtype": "Small Text",
+   "label": "Comentário"
+  },
+  {
+   "fieldname": "anexo",
+   "fieldtype": "Attach",
+   "label": "Anexo"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Etapa Mobilizacao",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "permissions": []
+}

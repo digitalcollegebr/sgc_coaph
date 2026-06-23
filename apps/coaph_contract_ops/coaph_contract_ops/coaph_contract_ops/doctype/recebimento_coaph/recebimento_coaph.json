@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "faturamento",
+  "contrato",
+  "ciclo_mensal",
+  "cb1",
+  "status",
+  "sec_valores",
+  "data_prevista",
+  "data_recebimento",
+  "cb2",
+  "valor_previsto",
+  "valor_recebido",
+  "diferenca",
+  "sec_obs",
+  "comprovante",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "REC-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "faturamento",
+   "fieldtype": "Link",
+   "label": "Faturamento",
+   "options": "Faturamento COAPH",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "contrato",
+   "fieldtype": "Link",
+   "label": "Contrato 360",
+   "options": "Contrato 360",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ciclo_mensal",
+   "fieldtype": "Link",
+   "label": "Ciclo Mensal",
+   "options": "Ciclo Mensal Medicao"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Previsto\nRecebido parcial\nRecebido integral\nAtrasado\nDivergente\nCancelado",
+   "in_list_view": 1,
+   "default": "Previsto"
+  },
+  {
+   "fieldname": "sec_valores",
+   "fieldtype": "Section Break",
+   "label": "Datas e Valores"
+  },
+  {
+   "fieldname": "data_prevista",
+   "fieldtype": "Date",
+   "label": "Data Prevista"
+  },
+  {
+   "fieldname": "data_recebimento",
+   "fieldtype": "Date",
+   "label": "Data do Recebimento"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_previsto",
+   "fieldtype": "Currency",
+   "label": "Valor Previsto (R$)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "valor_recebido",
+   "fieldtype": "Currency",
+   "label": "Valor Recebido (R$)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "diferenca",
+   "fieldtype": "Currency",
+   "label": "Diferença (R$)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_obs",
+   "fieldtype": "Section Break",
+   "label": "Comprovante e Observações"
+  },
+  {
+   "fieldname": "comprovante",
+   "fieldtype": "Attach",
+   "label": "Comprovante"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Recebimento COAPH",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Financeiro",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field"
+}

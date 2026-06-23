@@ -1,0 +1,274 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "disputa_proposta",
+  "contratante",
+  "unidade_atendimento",
+  "cb1",
+  "responsavel_juridico",
+  "responsavel_comercial",
+  "status",
+  "sec_minuta",
+  "numero_minuta",
+  "versao_minuta",
+  "data_recebimento_minuta",
+  "cb2",
+  "data_envio_ajustes",
+  "data_aprovacao_juridica",
+  "data_assinatura",
+  "sec_juridico",
+  "clausulas_criticas",
+  "pendencias_juridicas",
+  "parecer_juridico",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "FORM-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "disputa_proposta",
+   "fieldtype": "Link",
+   "label": "Disputa/Proposta",
+   "options": "Disputa Proposta COAPH",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "contratante",
+   "fieldtype": "Link",
+   "label": "Contratante",
+   "options": "Contratante COAPH",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "unidade_atendimento",
+   "fieldtype": "Link",
+   "label": "Unidade de Atendimento",
+   "options": "Unidade Atendimento"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "responsavel_juridico",
+   "fieldtype": "Link",
+   "label": "Responsável Jurídico",
+   "options": "User"
+  },
+  {
+   "fieldname": "responsavel_comercial",
+   "fieldtype": "Link",
+   "label": "Responsável Comercial",
+   "options": "User"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aguardando minuta\nMinuta em análise jurídica\nMinuta em negociação\nAjustes solicitados\nAprovada juridicamente\nEm assinatura\nContrato assinado\nContrato recusado\nCancelada",
+   "in_list_view": 1,
+   "default": "Aguardando minuta"
+  },
+  {
+   "fieldname": "sec_minuta",
+   "fieldtype": "Section Break",
+   "label": "Minuta"
+  },
+  {
+   "fieldname": "numero_minuta",
+   "fieldtype": "Data",
+   "label": "Número da Minuta"
+  },
+  {
+   "fieldname": "versao_minuta",
+   "fieldtype": "Data",
+   "label": "Versão da Minuta"
+  },
+  {
+   "fieldname": "data_recebimento_minuta",
+   "fieldtype": "Date",
+   "label": "Recebimento da Minuta"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_envio_ajustes",
+   "fieldtype": "Date",
+   "label": "Envio de Ajustes"
+  },
+  {
+   "fieldname": "data_aprovacao_juridica",
+   "fieldtype": "Date",
+   "label": "Aprovação Jurídica"
+  },
+  {
+   "fieldname": "data_assinatura",
+   "fieldtype": "Date",
+   "label": "Data de Assinatura"
+  },
+  {
+   "fieldname": "sec_juridico",
+   "fieldtype": "Section Break",
+   "label": "Análise Jurídica"
+  },
+  {
+   "fieldname": "clausulas_criticas",
+   "fieldtype": "Text",
+   "label": "Cláusulas Críticas"
+  },
+  {
+   "fieldname": "pendencias_juridicas",
+   "fieldtype": "Text",
+   "label": "Pendências Jurídicas"
+  },
+  {
+   "fieldname": "parecer_juridico",
+   "fieldtype": "Text",
+   "label": "Parecer Jurídico"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Formalizacao Contratual",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Juridico",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Financeiro",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "allow_workflow": 1
+}

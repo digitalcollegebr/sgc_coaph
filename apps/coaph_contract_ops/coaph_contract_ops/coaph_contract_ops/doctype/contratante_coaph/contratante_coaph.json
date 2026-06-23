@@ -1,0 +1,284 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "nome_contratante",
+  "tipo_contratante",
+  "cnpj",
+  "cb1",
+  "razao_social",
+  "nome_fantasia",
+  "status",
+  "sec_end",
+  "cidade",
+  "estado",
+  "endereco",
+  "cb2",
+  "contato_principal",
+  "email_contato",
+  "telefone_contato",
+  "sec_obs",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "CTNT-.#####"
+  },
+  {
+   "fieldname": "nome_contratante",
+   "fieldtype": "Data",
+   "label": "Nome do Contratante",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tipo_contratante",
+   "fieldtype": "Select",
+   "label": "Tipo de Contratante",
+   "options": "Público\nPrivado\nFilantrópico\nCooperativa\nOutro",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cnpj",
+   "fieldtype": "Data",
+   "label": "CNPJ",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "razao_social",
+   "fieldtype": "Data",
+   "label": "Razão Social"
+  },
+  {
+   "fieldname": "nome_fantasia",
+   "fieldtype": "Data",
+   "label": "Nome Fantasia"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Ativo\nInativo\nProspect\nBloqueado",
+   "in_list_view": 1,
+   "default": "Ativo"
+  },
+  {
+   "fieldname": "sec_end",
+   "fieldtype": "Section Break",
+   "label": "Endereço e Contato"
+  },
+  {
+   "fieldname": "cidade",
+   "fieldtype": "Data",
+   "label": "Cidade"
+  },
+  {
+   "fieldname": "estado",
+   "fieldtype": "Data",
+   "label": "Estado (UF)"
+  },
+  {
+   "fieldname": "endereco",
+   "fieldtype": "Small Text",
+   "label": "Endereço"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contato_principal",
+   "fieldtype": "Data",
+   "label": "Contato Principal"
+  },
+  {
+   "fieldname": "email_contato",
+   "fieldtype": "Data",
+   "label": "E-mail de Contato"
+  },
+  {
+   "fieldname": "telefone_contato",
+   "fieldtype": "Data",
+   "label": "Telefone de Contato"
+  },
+  {
+   "fieldname": "sec_obs",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Contratante COAPH",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Juridico",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Financeiro",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Mobilizacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC RH Cooperados",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "nome_contratante",
+ "show_title_field_in_link": 1,
+ "search_fields": "razao_social,cnpj"
+}

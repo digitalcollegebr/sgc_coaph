@@ -1,0 +1,272 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "contrato",
+  "contratante",
+  "unidade_atendimento",
+  "cb1",
+  "responsavel_mobilizacao",
+  "status",
+  "progresso_percentual",
+  "sec_datas",
+  "data_kickoff_prevista",
+  "data_kickoff_realizada",
+  "cb2",
+  "data_prevista_go_live",
+  "data_go_live",
+  "sec_etapas",
+  "etapas",
+  "sec_obs",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "MOBI-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "contrato",
+   "fieldtype": "Link",
+   "label": "Contrato 360",
+   "options": "Contrato 360",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "contratante",
+   "fieldtype": "Link",
+   "label": "Contratante",
+   "options": "Contratante COAPH",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "unidade_atendimento",
+   "fieldtype": "Link",
+   "label": "Unidade de Atendimento",
+   "options": "Unidade Atendimento"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "responsavel_mobilizacao",
+   "fieldtype": "Link",
+   "label": "Responsável pela Mobilização",
+   "options": "User"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Aguardando kickoff\nKickoff interno realizado\nPlano de mobilização definido\nContrato parametrizado\nEquipe dimensionada\nCooperados em mobilização\nCooperados credenciados\nOnboarding concluído\nOperação liberada\nMobilização cancelada",
+   "in_list_view": 1,
+   "default": "Aguardando kickoff"
+  },
+  {
+   "fieldname": "progresso_percentual",
+   "fieldtype": "Percent",
+   "label": "Progresso (%)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sec_datas",
+   "fieldtype": "Section Break",
+   "label": "Datas"
+  },
+  {
+   "fieldname": "data_kickoff_prevista",
+   "fieldtype": "Date",
+   "label": "Kickoff Previsto"
+  },
+  {
+   "fieldname": "data_kickoff_realizada",
+   "fieldtype": "Date",
+   "label": "Kickoff Realizado"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_prevista_go_live",
+   "fieldtype": "Date",
+   "label": "Go-Live Previsto"
+  },
+  {
+   "fieldname": "data_go_live",
+   "fieldtype": "Date",
+   "label": "Go-Live Realizado"
+  },
+  {
+   "fieldname": "sec_etapas",
+   "fieldtype": "Section Break",
+   "label": "Etapas da Mobilização"
+  },
+  {
+   "fieldname": "etapas",
+   "fieldtype": "Table",
+   "label": "Etapas",
+   "options": "Etapa Mobilizacao"
+  },
+  {
+   "fieldname": "sec_obs",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Plano Mobilizacao",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Mobilizacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC RH Cooperados",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Juridico",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "allow_workflow": 1
+}

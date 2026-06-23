@@ -1,0 +1,94 @@
+# =============================================================================
+# SGC COAPH — Imagem Docker customizada
+# ERPNext oficial (version-15) + app coaph_contract_ops
+#
+# Abordagem: padrão oficial do frappe_docker para "custom images".
+#   - Partimos da imagem base oficial `frappe/build` (toolchain de build do bench).
+#   - Recebemos a lista de apps via ARG APPS_JSON_BASE64 (apps.json em base64).
+#   - O bench instala os apps (erpnext + coaph_contract_ops) e faz o build de
+#     assets dentro de um bench efêmero.
+#   - O resultado final é uma imagem enxuta baseada em `frappe/base`, contendo
+#     o bench já montado em /home/frappe/frappe-bench.
+#
+#   NÃO há fork do core. NÃO há alteração de código do Frappe/ERPNext.
+#   O servidor de produção NÃO compila nada — apenas roda esta imagem publicada.
+#
+# Esta build deve ser executada FORA do servidor (CI ou máquina local) via
+# `deploy/scripts/build.sh`, que gera o APPS_JSON_BASE64 a partir do apps.json.
+# =============================================================================
+
+# Versão das imagens base oficiais do Frappe.
+# (FRAPPE_BRANCH controla qual versão do bench/base será usada.)
+ARG FRAPPE_BRANCH=version-15
+
+# -----------------------------------------------------------------------------
+# Stage 1: build — instala os apps e compila os assets
+# -----------------------------------------------------------------------------
+FROM frappe/build:${FRAPPE_BRANCH} AS build
+
+# Re-declara ARGs necessários neste stage.
+ARG FRAPPE_BRANCH=version-15
+ARG ERPNEXT_BRANCH=version-15
+ARG COAPH_APP_BRANCH=main
+
+# Lista de apps a instalar (apps.json codificado em base64).
+# Gerado por build.sh: base64 -w0 apps.json
+ARG APPS_JSON_BASE64
+
+USER frappe
+WORKDIR /home/frappe
+
+# Decodifica o apps.json para o disco (consumido pelo `bench init`).
+RUN if [ -z "${APPS_JSON_BASE64}" ]; then \
+      echo "ERRO: APPS_JSON_BASE64 não foi fornecido. Use deploy/scripts/build.sh."; \
+      exit 1; \
+    fi && \
+    echo "${APPS_JSON_BASE64}" | base64 -d > /tmp/apps.json && \
+    echo "apps.json decodificado:" && cat /tmp/apps.json
+
+# Inicializa o bench já instalando frappe (na FRAPPE_BRANCH) e os apps do apps.json.
+# --apps_path aponta para o apps.json com erpnext + coaph_contract_ops.
+RUN bench init \
+      --frappe-branch="${FRAPPE_BRANCH}" \
+      --apps_path=/tmp/apps.json \
+      --no-procfile \
+      --no-backups \
+      --skip-redis-config-generation \
+      --verbose \
+      /home/frappe/frappe-bench
+
+WORKDIR /home/frappe/frappe-bench
+
+# Garante que os apps fiquem registrados em sites/apps.txt.
+RUN ls -1 apps > sites/apps.txt
+
+# -----------------------------------------------------------------------------
+# Stage 2: imagem final enxuta (runtime)
+# -----------------------------------------------------------------------------
+FROM frappe/base:${FRAPPE_BRANCH} AS coaph
+
+ARG FRAPPE_BRANCH=version-15
+
+USER frappe
+
+# Copia o bench já montado e compilado do stage de build.
+COPY --from=build --chown=frappe:frappe /home/frappe/frappe-bench /home/frappe/frappe-bench
+
+WORKDIR /home/frappe/frappe-bench
+
+# Imagem pronta. Os comandos (gunicorn, worker, scheduler, etc.) são definidos
+# pelo compose.yaml conforme o padrão frappe_docker.
+VOLUME [ "/home/frappe/frappe-bench/sites" ]
+
+CMD [ \
+  "/home/frappe/frappe-bench/env/bin/gunicorn", \
+  "--chdir=/home/frappe/frappe-bench/sites", \
+  "--bind=0.0.0.0:8000", \
+  "--threads=4", \
+  "--workers=2", \
+  "--worker-class=gthread", \
+  "--worker-tmp-dir=/dev/shm", \
+  "--timeout=120", \
+  "--preload", \
+  "frappe.app:application" \
+]

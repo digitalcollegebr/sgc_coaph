@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2026-06-23 00:00:00.000000",
+ "module": "COAPH ContractOps",
+ "name": "Contratos Vencendo",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    name AS \"Contrato:Link/Contrato 360:220\",\n    contratante AS \"Contratante:Link/Contratante COAPH:200\",\n    vigencia_fim AS \"Fim da Vigência:Date:120\",\n    DATEDIFF(vigencia_fim, CURDATE()) AS \"Dias p/ Vencer:Int:120\",\n    status_contrato AS \"Status::150\",\n    saude_contrato AS \"Saúde::120\",\n    valor_mensal AS \"Valor Mensal:Currency:140\"\nFROM `tabContrato 360`\nWHERE vigencia_fim IS NOT NULL\n  AND DATEDIFF(vigencia_fim, CURDATE()) <= 180\n  AND status_contrato != 'Encerrado'\nORDER BY vigencia_fim ASC",
+ "ref_doctype": "Contrato 360",
+ "report_name": "Contratos Vencendo",
+ "report_type": "Query Report",
+ "roles": [
+  {"role": "SGC Administrador"},
+  {"role": "SGC Diretoria"},
+  {"role": "SGC Comercial"},
+  {"role": "SGC Operacao"}
+ ]
+}

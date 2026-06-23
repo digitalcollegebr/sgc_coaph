@@ -1,0 +1,21 @@
+# Segredos — NUNCA versionar
+deploy/.env
+*.env
+!deploy/.env.example
+
+# Backups locais
+backups/*
+!backups/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Sistema
+.DS_Store
+*.log
+
+# Node (build de assets, se houver)
+node_modules/

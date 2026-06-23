@@ -1,0 +1,316 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "contrato",
+  "vigencia_atual_fim",
+  "dias_para_vencimento",
+  "cb1",
+  "responsavel_renovacao",
+  "estrategia",
+  "status",
+  "sec_alertas",
+  "data_alerta_180",
+  "data_alerta_120",
+  "data_alerta_90",
+  "cb_al",
+  "data_alerta_60",
+  "data_alerta_30",
+  "sec_reajuste",
+  "indice_reajuste",
+  "percentual_reajuste_proposto",
+  "novo_valor_mensal",
+  "sec_pareceres",
+  "parecer_comercial",
+  "parecer_operacional",
+  "parecer_financeiro",
+  "parecer_juridico",
+  "cb_dec",
+  "decisao_final",
+  "data_decisao",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "RENO-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "contrato",
+   "fieldtype": "Link",
+   "label": "Contrato 360",
+   "options": "Contrato 360",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vigencia_atual_fim",
+   "fieldtype": "Date",
+   "label": "Fim da Vigência Atual",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "dias_para_vencimento",
+   "fieldtype": "Int",
+   "label": "Dias para Vencimento",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "responsavel_renovacao",
+   "fieldtype": "Link",
+   "label": "Responsável pela Renovação",
+   "options": "User"
+  },
+  {
+   "fieldname": "estrategia",
+   "fieldtype": "Select",
+   "label": "Estratégia",
+   "options": "Renovar\nRenegociar\nReprecificar\nAditivar\nEncerrar\nAguardar"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Monitorando vigência\nAlerta 180 dias\nAlerta 120 dias\nAlerta 90 dias\nEm análise de renovação\nEm negociação\nMinuta de renovação\nRenovado\nNão renovado\nEncerrado",
+   "in_list_view": 1,
+   "default": "Monitorando vigência"
+  },
+  {
+   "fieldname": "sec_alertas",
+   "fieldtype": "Section Break",
+   "label": "Marcos de Alerta"
+  },
+  {
+   "fieldname": "data_alerta_180",
+   "fieldtype": "Date",
+   "label": "Alerta 180 dias"
+  },
+  {
+   "fieldname": "data_alerta_120",
+   "fieldtype": "Date",
+   "label": "Alerta 120 dias"
+  },
+  {
+   "fieldname": "data_alerta_90",
+   "fieldtype": "Date",
+   "label": "Alerta 90 dias"
+  },
+  {
+   "fieldname": "cb_al",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "data_alerta_60",
+   "fieldtype": "Date",
+   "label": "Alerta 60 dias"
+  },
+  {
+   "fieldname": "data_alerta_30",
+   "fieldtype": "Date",
+   "label": "Alerta 30 dias"
+  },
+  {
+   "fieldname": "sec_reajuste",
+   "fieldtype": "Section Break",
+   "label": "Reajuste e Valores"
+  },
+  {
+   "fieldname": "indice_reajuste",
+   "fieldtype": "Select",
+   "label": "Índice de Reajuste",
+   "options": "IPCA\nIGPM\nINPC\nFixo\nOutro"
+  },
+  {
+   "fieldname": "percentual_reajuste_proposto",
+   "fieldtype": "Percent",
+   "label": "Reajuste Proposto (%)"
+  },
+  {
+   "fieldname": "novo_valor_mensal",
+   "fieldtype": "Currency",
+   "label": "Novo Valor Mensal (R$)"
+  },
+  {
+   "fieldname": "sec_pareceres",
+   "fieldtype": "Section Break",
+   "label": "Pareceres e Decisão"
+  },
+  {
+   "fieldname": "parecer_comercial",
+   "fieldtype": "Small Text",
+   "label": "Parecer Comercial"
+  },
+  {
+   "fieldname": "parecer_operacional",
+   "fieldtype": "Small Text",
+   "label": "Parecer Operacional"
+  },
+  {
+   "fieldname": "parecer_financeiro",
+   "fieldtype": "Small Text",
+   "label": "Parecer Financeiro"
+  },
+  {
+   "fieldname": "parecer_juridico",
+   "fieldtype": "Small Text",
+   "label": "Parecer Jurídico"
+  },
+  {
+   "fieldname": "cb_dec",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "decisao_final",
+   "fieldtype": "Small Text",
+   "label": "Decisão Final"
+  },
+  {
+   "fieldname": "data_decisao",
+   "fieldtype": "Date",
+   "label": "Data da Decisão"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Renovacao Contratual",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Juridico",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Financeiro",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "allow_workflow": 1
+}

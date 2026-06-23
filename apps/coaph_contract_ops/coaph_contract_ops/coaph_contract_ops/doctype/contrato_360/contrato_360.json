@@ -1,0 +1,532 @@
+{
+ "actions": [],
+ "creation": "2026-06-23 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sec_id",
+  "naming_series",
+  "numero_contrato",
+  "titulo_contrato",
+  "cb_id",
+  "tipo_contrato",
+  "origem",
+  "formalizacao_contratual",
+  "sec_cliente",
+  "contratante",
+  "cb_cliente",
+  "unidade_atendimento",
+  "sec_vigencia",
+  "data_assinatura",
+  "vigencia_inicio",
+  "vigencia_fim",
+  "prazo_meses",
+  "cb_vig",
+  "valor_mensal",
+  "valor_anual",
+  "valor_global",
+  "indice_reajuste",
+  "data_base_reajuste",
+  "aviso_previo_dias",
+  "sec_status",
+  "status_contrato",
+  "cb_saude",
+  "saude_contrato",
+  "risco_renovacao",
+  "sec_resp",
+  "gestor_contrato",
+  "responsavel_operacional",
+  "cb_resp",
+  "responsavel_financeiro",
+  "responsavel_juridico",
+  "sec_servicos",
+  "servicos",
+  "sec_fin",
+  "condicao_pagamento",
+  "dia_previsto_faturamento",
+  "dia_previsto_recebimento",
+  "cb_fin",
+  "centro_custo",
+  "conta_receita",
+  "retencoes_previstas",
+  "observacoes_financeiras",
+  "sec_op",
+  "tipo_servico",
+  "especialidades",
+  "volume_estimado",
+  "cb_op",
+  "quantidade_cooperados_prevista",
+  "escala_prevista",
+  "sla_operacional",
+  "observacoes_operacionais",
+  "sec_obs",
+  "observacoes"
+ ],
+ "fields": [
+  {
+   "fieldname": "sec_id",
+   "fieldtype": "Section Break",
+   "label": "Identificação"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Série",
+   "options": "CONT-.YYYY.-.#####"
+  },
+  {
+   "fieldname": "numero_contrato",
+   "fieldtype": "Data",
+   "label": "Número do Contrato",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "titulo_contrato",
+   "fieldtype": "Data",
+   "label": "Título do Contrato",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_id",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tipo_contrato",
+   "fieldtype": "Select",
+   "label": "Tipo de Contrato",
+   "options": "Público\nPrivado\nEmergencial\nRenovação\nAditivo\nOutro",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "origem",
+   "fieldtype": "Select",
+   "label": "Origem",
+   "options": "Licitação\nBID privado\nProposta direta\nRenovação\nAditivo"
+  },
+  {
+   "fieldname": "formalizacao_contratual",
+   "fieldtype": "Link",
+   "label": "Formalização Contratual",
+   "options": "Formalizacao Contratual"
+  },
+  {
+   "fieldname": "sec_cliente",
+   "fieldtype": "Section Break",
+   "label": "Contratante e Unidade"
+  },
+  {
+   "fieldname": "contratante",
+   "fieldtype": "Link",
+   "label": "Contratante",
+   "options": "Contratante COAPH",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cb_cliente",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "unidade_atendimento",
+   "fieldtype": "Link",
+   "label": "Unidade de Atendimento",
+   "options": "Unidade Atendimento"
+  },
+  {
+   "fieldname": "sec_vigencia",
+   "fieldtype": "Section Break",
+   "label": "Vigência e Valores"
+  },
+  {
+   "fieldname": "data_assinatura",
+   "fieldtype": "Date",
+   "label": "Data de Assinatura"
+  },
+  {
+   "fieldname": "vigencia_inicio",
+   "fieldtype": "Date",
+   "label": "Início da Vigência"
+  },
+  {
+   "fieldname": "vigencia_fim",
+   "fieldtype": "Date",
+   "label": "Fim da Vigência"
+  },
+  {
+   "fieldname": "prazo_meses",
+   "fieldtype": "Int",
+   "label": "Prazo (meses)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cb_vig",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "valor_mensal",
+   "fieldtype": "Currency",
+   "label": "Valor Mensal (R$)"
+  },
+  {
+   "fieldname": "valor_anual",
+   "fieldtype": "Currency",
+   "label": "Valor Anual (R$)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "valor_global",
+   "fieldtype": "Currency",
+   "label": "Valor Global (R$)"
+  },
+  {
+   "fieldname": "indice_reajuste",
+   "fieldtype": "Select",
+   "label": "Índice de Reajuste",
+   "options": "IPCA\nIGPM\nINPC\nFixo\nOutro"
+  },
+  {
+   "fieldname": "data_base_reajuste",
+   "fieldtype": "Date",
+   "label": "Data-base do Reajuste"
+  },
+  {
+   "fieldname": "aviso_previo_dias",
+   "fieldtype": "Int",
+   "label": "Aviso Prévio (dias)"
+  },
+  {
+   "fieldname": "sec_status",
+   "fieldtype": "Section Break",
+   "label": "Status e Saúde"
+  },
+  {
+   "fieldname": "status_contrato",
+   "fieldtype": "Select",
+   "label": "Status do Contrato",
+   "options": "Em formalização\nEm mobilização\nOperação assistida\nAtivo\nAtivo com atenção\nCrítico\nEm renovação\nSuspenso\nEm encerramento\nEncerrado",
+   "in_list_view": 1,
+   "default": "Em mobilização"
+  },
+  {
+   "fieldname": "cb_saude",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "saude_contrato",
+   "fieldtype": "Select",
+   "label": "Saúde do Contrato",
+   "options": "Saudável\nAtenção\nCrítico\nRisco de perda",
+   "in_list_view": 1,
+   "default": "Saudável"
+  },
+  {
+   "fieldname": "risco_renovacao",
+   "fieldtype": "Select",
+   "label": "Risco de Renovação",
+   "options": "Baixo\nMédio\nAlto\nCrítico"
+  },
+  {
+   "fieldname": "sec_resp",
+   "fieldtype": "Section Break",
+   "label": "Responsáveis"
+  },
+  {
+   "fieldname": "gestor_contrato",
+   "fieldtype": "Link",
+   "label": "Gestor do Contrato",
+   "options": "User"
+  },
+  {
+   "fieldname": "responsavel_operacional",
+   "fieldtype": "Link",
+   "label": "Responsável Operacional",
+   "options": "User"
+  },
+  {
+   "fieldname": "cb_resp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "responsavel_financeiro",
+   "fieldtype": "Link",
+   "label": "Responsável Financeiro",
+   "options": "User"
+  },
+  {
+   "fieldname": "responsavel_juridico",
+   "fieldtype": "Link",
+   "label": "Responsável Jurídico",
+   "options": "User"
+  },
+  {
+   "fieldname": "sec_servicos",
+   "fieldtype": "Section Break",
+   "label": "Serviços Contratados"
+  },
+  {
+   "fieldname": "servicos",
+   "fieldtype": "Table",
+   "label": "Serviços",
+   "options": "Servico Contratado"
+  },
+  {
+   "fieldname": "sec_fin",
+   "fieldtype": "Section Break",
+   "label": "Parâmetros Financeiros"
+  },
+  {
+   "fieldname": "condicao_pagamento",
+   "fieldtype": "Data",
+   "label": "Condição de Pagamento"
+  },
+  {
+   "fieldname": "dia_previsto_faturamento",
+   "fieldtype": "Int",
+   "label": "Dia Previsto de Faturamento"
+  },
+  {
+   "fieldname": "dia_previsto_recebimento",
+   "fieldtype": "Int",
+   "label": "Dia Previsto de Recebimento"
+  },
+  {
+   "fieldname": "cb_fin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "centro_custo",
+   "fieldtype": "Data",
+   "label": "Centro de Custo"
+  },
+  {
+   "fieldname": "conta_receita",
+   "fieldtype": "Data",
+   "label": "Conta de Receita"
+  },
+  {
+   "fieldname": "retencoes_previstas",
+   "fieldtype": "Currency",
+   "label": "Retenções Previstas (R$)"
+  },
+  {
+   "fieldname": "observacoes_financeiras",
+   "fieldtype": "Small Text",
+   "label": "Observações Financeiras"
+  },
+  {
+   "fieldname": "sec_op",
+   "fieldtype": "Section Break",
+   "label": "Parâmetros Operacionais"
+  },
+  {
+   "fieldname": "tipo_servico",
+   "fieldtype": "Data",
+   "label": "Tipo de Serviço"
+  },
+  {
+   "fieldname": "especialidades",
+   "fieldtype": "Small Text",
+   "label": "Especialidades"
+  },
+  {
+   "fieldname": "volume_estimado",
+   "fieldtype": "Data",
+   "label": "Volume Estimado"
+  },
+  {
+   "fieldname": "cb_op",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantidade_cooperados_prevista",
+   "fieldtype": "Int",
+   "label": "Qtd. de Cooperados Prevista"
+  },
+  {
+   "fieldname": "escala_prevista",
+   "fieldtype": "Data",
+   "label": "Escala Prevista"
+  },
+  {
+   "fieldname": "sla_operacional",
+   "fieldtype": "Small Text",
+   "label": "SLA Operacional"
+  },
+  {
+   "fieldname": "observacoes_operacionais",
+   "fieldtype": "Small Text",
+   "label": "Observações Operacionais"
+  },
+  {
+   "fieldname": "sec_obs",
+   "fieldtype": "Section Break",
+   "label": "Observações"
+  },
+  {
+   "fieldname": "observacoes",
+   "fieldtype": "Text",
+   "label": "Observações"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "COAPH ContractOps",
+ "name": "Contrato 360",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Administrador",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Comercial",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Operacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Juridico",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Financeiro",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Mobilizacao",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC RH Cooperados",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Diretoria",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  },
+  {
+   "role": "SGC Consulta",
+   "permlevel": 0,
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "report": 1,
+   "export": 1,
+   "share": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "title_field": "titulo_contrato",
+ "show_title_field_in_link": 1,
+ "search_fields": "numero_contrato,contratante",
+ "allow_workflow": 1
+}
