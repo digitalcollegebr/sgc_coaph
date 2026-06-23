@@ -178,7 +178,28 @@ def get_painel_executivo():
         [{"etapa": k, "qtd": v} for k, v in gargalos.items()],
         key=lambda x: x["qtd"], reverse=True,
     )
-    return {"as_of": str(hoje), "kpis": kpis, "contratos": linhas, "gargalos": gargalos_list}
+
+    # Ordena por severidade (ação primeiro): vermelho > amarelo > azul > cinza > verde;
+    # dentro do mesmo nível, por vencimento mais próximo.
+    rank = {"vermelho": 0, "amarelo": 1, "azul": 2, "cinza": 3, "verde": 4}
+    INF = 10 ** 9
+    for l in linhas:
+        l["severidade"] = rank.get(l["semaforo"], 9)
+    linhas.sort(key=lambda l: (l["severidade"],
+                               l["dias_para_vencer"] if l["dias_para_vencer"] is not None else INF))
+
+    total = len(linhas)
+    saudaveis = sum(1 for l in linhas if l["semaforo"] == "verde")
+    resumo = {
+        "total": total,
+        "valor_sob_gestao": sum(l["valor_mensal"] for l in linhas),
+        "pct_saudavel": round(saudaveis / total * 100) if total else 0,
+        "criticos": kpis["bloqueados_criticos"],
+        "requer_presidencia": sum(1 for l in linhas if l["depende_presidencia"]),
+    }
+
+    return {"as_of": str(hoje), "resumo": resumo, "kpis": kpis,
+            "contratos": linhas, "gargalos": gargalos_list}
 
 
 # ----------------------------------------------------------------- helpers
@@ -215,23 +236,29 @@ def _contratos_atrasados(names):
     """Contratos com pendência aberta vencida OU etapa de mobilização atrasada."""
     atrasados = set()
     hoje = nowdate()
+    # Atenção: o operador "<" do frappe envolve o campo em ifnull(); por isso
+    # exigimos prazo preenchido ("is set"), senão pendências sem prazo (NULL)
+    # seriam tratadas como data antiga e contariam como atrasadas.
     pend = frappe.get_all(
         "Pendencia Contratual",
-        filters={"contrato": ["in", names], "status": ["in", PEND_ABERTAS],
-                 "prazo": ["<", hoje]},
+        filters=[["contrato", "in", names], ["status", "in", PEND_ABERTAS],
+                 ["prazo", "is", "set"], ["prazo", "<", hoje]],
         fields=["distinct contrato as contrato"],
     )
     atrasados.update(p["contrato"] for p in pend if p["contrato"])
 
+    # Atraso de mobilização só é relevante enquanto o contrato ainda está
+    # mobilizando; uma etapa marcada explicitamente como "Atrasado" sempre conta.
     etapas = frappe.db.sql(
         """
         SELECT DISTINCT p.contrato
         FROM `tabEtapa Mobilizacao` e
         JOIN `tabPlano Mobilizacao` p ON p.name = e.parent
+        JOIN `tabContrato 360` c ON c.name = p.contrato
         WHERE p.contrato IN %(names)s
-          AND (e.status = 'Atrasado'
-               OR (e.data_fim_prevista < %(hoje)s
-                   AND e.status NOT IN ('Concluído', 'Cancelado')))
+          AND c.status_contrato IN ('Em mobilização', 'Operação assistida')
+          AND e.status NOT IN ('Concluído', 'Cancelado')
+          AND (e.status = 'Atrasado' OR e.data_fim_prevista < %(hoje)s)
         """,
         {"names": names, "hoje": hoje}, as_dict=True,
     )
