@@ -31,5 +31,12 @@ fi
 echo "==> [push] Enviando imagem: ${IMAGE}"
 docker push "${IMAGE}"
 
-echo "==> [push] Publicação concluída: ${IMAGE}"
+# Também publica :latest (aponta para a mesma imagem do CUSTOM_TAG atual).
+if [[ "${CUSTOM_TAG}" != "latest" ]]; then
+  docker tag "${IMAGE}" "${CUSTOM_IMAGE}:latest"
+  echo "==> [push] Enviando imagem: ${CUSTOM_IMAGE}:latest"
+  docker push "${CUSTOM_IMAGE}:latest"
+fi
+
+echo "==> [push] Publicação concluída: ${IMAGE} (e :latest)"
 echo "==> [push] No servidor, rode:  ./scripts/pull.sh  e depois  ./scripts/update.sh"
