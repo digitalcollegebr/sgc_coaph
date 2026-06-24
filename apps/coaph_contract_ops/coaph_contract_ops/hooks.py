@@ -36,7 +36,6 @@ fixtures = [
         "Workflow Ciclo Mensal Medicao",
         "Workflow Renovacao Contratual",
     ]]]},
-    {"dt": "Workspace", "filters": [["module", "=", "COAPH Contract Ops"]]},
     {"dt": "Custom Field", "filters": [["module", "=", "COAPH Contract Ops"]]},
     {"dt": "Property Setter", "filters": [["module", "=", "COAPH Contract Ops"]]},
     {"dt": "Dashboard Chart", "filters": [["module", "=", "COAPH Contract Ops"]]},
@@ -49,6 +48,10 @@ fixtures = [
         "Alerta de Pendencia Critica",
         "Alerta de Contrato Critico",
     ]]]},
+    # IMPORTANTE: Workspace por ÚLTIMO — depende de Number Card/Dashboard Chart/
+    # Page/Report já existirem. Na v16 a importação é estrita e, se o workspace
+    # vier antes, suas referências falham e ele não é criado.
+    {"dt": "Workspace", "filters": [["module", "=", "COAPH Contract Ops"]]},
 ]
 
 # ------------------------------------------------------------------
