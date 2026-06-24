@@ -172,7 +172,7 @@ for rep in REPORTS:
 
 workspace = {
     "doctype": "Workspace", "name": "SGC COAPH", "label": "SGC COAPH",
-    "title": "SGC COAPH", "module": MODULE, "public": 1, "is_hidden": 0,
+    "title": "SGC COAPH", "type": "Workspace", "module": MODULE, "public": 1, "is_hidden": 0,
     "icon": "organization", "indicator_color": "blue",
     "sequence_id": 1.0, "content": build_content(),
     "shortcuts": shortcut_rows, "links": link_rows,

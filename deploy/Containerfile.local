@@ -12,7 +12,7 @@
 # Contexto de build = RAIZ do repositório (para enxergar ./apps/...).
 #   docker build -f deploy/Containerfile.local -t coaph/sgc-erpnext:local .
 # =============================================================================
-ARG ERPNEXT_BRANCH=version-15
+ARG ERPNEXT_BRANCH=version-16
 FROM frappe/erpnext:${ERPNEXT_BRANCH}
 
 # Copia o app local para dentro do bench (mantém dono frappe).

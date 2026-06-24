@@ -221,13 +221,17 @@ def _map_nomes(doctype, campo, ids):
 
 
 def _riscos_criticos(names):
-    rows = frappe.get_all(
-        "Risco Contratual",
-        filters={"contrato": ["in", names],
-                 "criticidade": ["in", ["Alta", "Crítica"]],
-                 "status": ["in", RISCO_ATIVOS]},
-        fields=["contrato", "count(name) as qtd"],
-        group_by="contrato",
+    rows = frappe.db.sql(
+        """
+        SELECT contrato, COUNT(name) AS qtd
+        FROM `tabRisco Contratual`
+        WHERE contrato IN %(names)s
+          AND criticidade IN ('Alta', 'Crítica')
+          AND status IN ('Identificado', 'Em monitoramento',
+                         'Mitigação em andamento', 'Materializado')
+        GROUP BY contrato
+        """,
+        {"names": names}, as_dict=True,
     )
     return {r["contrato"]: r["qtd"] for r in rows}
 
@@ -243,9 +247,9 @@ def _contratos_atrasados(names):
         "Pendencia Contratual",
         filters=[["contrato", "in", names], ["status", "in", PEND_ABERTAS],
                  ["prazo", "is", "set"], ["prazo", "<", hoje]],
-        fields=["distinct contrato as contrato"],
+        pluck="contrato",
     )
-    atrasados.update(p["contrato"] for p in pend if p["contrato"])
+    atrasados.update(c for c in pend if c)
 
     # Atraso de mobilização só é relevante enquanto o contrato ainda está
     # mobilizando; uma etapa marcada explicitamente como "Atrasado" sempre conta.

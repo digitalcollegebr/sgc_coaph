@@ -4,6 +4,7 @@
   "name": "SGC COAPH",
   "label": "SGC COAPH",
   "title": "SGC COAPH",
+  "type": "Workspace",
   "module": "COAPH Contract Ops",
   "public": 1,
   "is_hidden": 0,
