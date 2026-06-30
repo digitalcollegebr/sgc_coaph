@@ -1,0 +1,37 @@
+# =============================================================================
+# Override de produção: termina TLS público com Caddy (Let's Encrypt) e mantém
+# o frontend Frappe acessível apenas no loopback do host.
+#
+# Uso:
+#   docker compose -f compose.yaml -f compose.tls.yaml --env-file .env up -d
+# =============================================================================
+
+services:
+
+  # Frontend nginx do Frappe NÃO é publicado no host: o único ingress público
+  # é o Caddy (TLS). O Caddy alcança o frontend pela rede interna do Compose.
+  frontend:
+    ports: !reset []
+
+  # Borda TLS pública.
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      frontend:
+        condition: service_started
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      PUBLIC_DOMAIN: ${PUBLIC_DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL}
+      TZ: ${TIMEZONE}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  caddy-data:
+  caddy-config:

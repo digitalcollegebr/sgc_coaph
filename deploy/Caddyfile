@@ -1,0 +1,18 @@
+# Borda TLS da stack SGC COAPH.
+# Caddy obtém/renova o certificado Let's Encrypt automaticamente (HTTP-01 na :80)
+# e faz proxy reverso para o frontend nginx do Frappe (porta interna 8080),
+# que por sua vez serve assets e roteia backend (gunicorn) e websocket (socket.io).
+{
+	email {$ACME_EMAIL}
+}
+
+{$PUBLIC_DOMAIN} {
+	encode gzip zstd
+
+	# Uploads/relatórios podem ser grandes.
+	request_body {
+		max_size 60MB
+	}
+
+	reverse_proxy frontend:8080
+}

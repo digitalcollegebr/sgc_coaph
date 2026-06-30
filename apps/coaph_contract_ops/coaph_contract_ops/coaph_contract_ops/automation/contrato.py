@@ -18,6 +18,7 @@ def validate_contrato(doc, method=None):
     _validar_vigencia(doc)
     _calcular_prazo_meses(doc)
     _calcular_valor_anual(doc)
+    _calcular_taxa_legalidade(doc)
     _definir_saude_inicial(doc)
 
 
@@ -39,6 +40,13 @@ def _calcular_valor_anual(doc):
     # recalculando quando valor_mensal muda.
     if flt(doc.get("valor_mensal")):
         doc.valor_anual = flt(doc.valor_mensal) * 12
+
+
+def _calcular_taxa_legalidade(doc):
+    # Regra de negócio (validada contra a planilha de backlog):
+    # Taxa de Legalidade = Taxa Administrativa (bruta) + Impostos.
+    # Campo read_only no formulário => sempre derivado.
+    doc.taxa_legalidade = flt(doc.get("taxa_admin_bruta")) + flt(doc.get("percentual_impostos"))
 
 
 def _definir_saude_inicial(doc):

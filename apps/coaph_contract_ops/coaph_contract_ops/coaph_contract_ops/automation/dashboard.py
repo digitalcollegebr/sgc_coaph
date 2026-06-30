@@ -34,7 +34,7 @@ STATUS_PARA_ETAPA = {
     "Em mobilização": 1,
     "Operação assistida": 2,
     "Ativo": 3, "Ativo com atenção": 3, "Crítico": 3, "Suspenso": 3,
-    "Em renovação": 4,
+    "Vencido": 4, "Em renovação": 4,
     "Em encerramento": 5,
     "Encerrado": 5,
 }
@@ -47,6 +47,7 @@ PROXIMA_ACAO = {
     "Ativo": "Monitorar produção e ciclos mensais",
     "Ativo com atenção": "Tratar pendências e normalizar saúde",
     "Crítico": "Plano de ação imediato (decisão da diretoria)",
+    "Vencido": "Vigência expirada — renovar ou encerrar",
     "Em renovação": "Conduzir negociação/decisão de renovação",
     "Suspenso": "Avaliar retomada ou encerramento",
     "Em encerramento": "Concluir encerramento e prestação de contas",
@@ -59,7 +60,8 @@ def _semaforo(c, dias, atrasado):
     vencido = dias is not None and dias < 0 and c.status_contrato not in ENCERRADOS
     if c.status_contrato == "Encerrado":
         return "verde"
-    if (vencido or atrasado or c.status_contrato in CRITICO_STATUS
+    if (vencido or atrasado or c.status_contrato == "Vencido"
+            or c.status_contrato in CRITICO_STATUS
             or c.saude_contrato in SAUDE_RUIM):
         return "vermelho"
     if c.status_contrato == "Em formalização":
@@ -121,7 +123,8 @@ def get_painel_executivo():
         riscos = riscos_por_contrato.get(c.name, 0)
         semaforo = _semaforo(c, dias, atrasado)
         depende_presidencia = (
-            c.status_contrato in ("Crítico", "Suspenso", "Em renovação", "Em encerramento")
+            c.status_contrato in ("Crítico", "Suspenso", "Vencido",
+                                  "Em renovação", "Em encerramento")
             or c.saude_contrato in SAUDE_RUIM
         )
 

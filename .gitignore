@@ -7,6 +7,13 @@ deploy/.env
 backups/*
 !backups/.gitkeep
 
+# Planilhas/dados reais de backlog (não versionar dados do cliente)
+*.csv
+*.xlsx
+
+# Lixo de validação de compose
+deploy/config-err.txt
+
 # Python
 __pycache__/
 *.py[cod]

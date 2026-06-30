@@ -448,5 +448,11 @@
   "name": "Vencida",
   "workflow_state_name": "Vencida",
   "style": "Success"
+ },
+ {
+  "doctype": "Workflow State",
+  "name": "Vencido",
+  "workflow_state_name": "Vencido",
+  "style": "Danger"
  }
 ]

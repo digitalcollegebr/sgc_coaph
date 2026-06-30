@@ -547,6 +547,12 @@
     "doc_status": "0",
     "allow_edit": "SGC Operacao",
     "is_optional_state": 0
+   },
+   {
+    "state": "Vencido",
+    "doc_status": "0",
+    "allow_edit": "SGC Operacao",
+    "is_optional_state": 0
    }
   ],
   "transitions": [
@@ -638,6 +644,48 @@
     "state": "Em encerramento",
     "action": "Encerrar contrato",
     "next_state": "Encerrado",
+    "allowed": "SGC Diretoria",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ativo",
+    "action": "Marcar como vencido",
+    "next_state": "Vencido",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Ativo com atenção",
+    "action": "Marcar como vencido",
+    "next_state": "Vencido",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Crítico",
+    "action": "Marcar como vencido",
+    "next_state": "Vencido",
+    "allowed": "SGC Operacao",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Vencido",
+    "action": "Iniciar renovação",
+    "next_state": "Em renovação",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Vencido",
+    "action": "Iniciar encerramento",
+    "next_state": "Em encerramento",
+    "allowed": "SGC Comercial",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Vencido",
+    "action": "Reativar",
+    "next_state": "Ativo",
     "allowed": "SGC Diretoria",
     "allow_self_approval": 1
    }

@@ -8,15 +8,21 @@
   "sec_id",
   "naming_series",
   "numero_contrato",
+  "codigo_gcoop",
   "titulo_contrato",
+  "sigla_contrato",
   "cb_id",
   "tipo_contrato",
   "origem",
+  "modalidade_contratacao",
   "formalizacao_contratual",
   "sec_cliente",
   "contratante",
+  "cnpj_contratante",
   "cb_cliente",
   "unidade_atendimento",
+  "municipio",
+  "uf",
   "sec_vigencia",
   "data_assinatura",
   "vigencia_inicio",
@@ -51,9 +57,17 @@
   "conta_receita",
   "retencoes_previstas",
   "observacoes_financeiras",
+  "sec_taxas",
+  "taxa_admin_contratual",
+  "taxa_admin_bruta",
+  "percentual_impostos",
+  "cb_taxas",
+  "taxa_legalidade",
+  "taxa_comercial",
   "sec_op",
   "tipo_servico",
   "especialidades",
+  "especialidade_principal",
   "volume_estimado",
   "cb_op",
   "quantidade_cooperados_prevista",
@@ -82,11 +96,25 @@
    "in_list_view": 1
   },
   {
+   "fieldname": "codigo_gcoop",
+   "fieldtype": "Data",
+   "label": "Código gcoop",
+   "unique": 1,
+   "description": "Código interno legado (planilha de backlog). Único.",
+   "in_standard_filter": 1
+  },
+  {
    "fieldname": "titulo_contrato",
    "fieldtype": "Data",
    "label": "Título do Contrato",
    "reqd": 1,
    "in_list_view": 1
+  },
+  {
+   "fieldname": "sigla_contrato",
+   "fieldtype": "Data",
+   "label": "Sigla / Apelido",
+   "in_standard_filter": 1
   },
   {
    "fieldname": "cb_id",
@@ -104,6 +132,13 @@
    "fieldtype": "Select",
    "label": "Origem",
    "options": "Licitação\nBID privado\nProposta direta\nRenovação\nAditivo"
+  },
+  {
+   "fieldname": "modalidade_contratacao",
+   "fieldtype": "Select",
+   "label": "Modalidade de Contratação",
+   "options": "\nVenda Direta\nLicitação\nAdesão\nDispensa\nCredenciamento\nOutro",
+   "in_standard_filter": 1
   },
   {
    "fieldname": "formalizacao_contratual",
@@ -125,6 +160,12 @@
    "in_list_view": 1
   },
   {
+   "fieldname": "cnpj_contratante",
+   "fieldtype": "Data",
+   "label": "CNPJ do Contratante",
+   "description": "CNPJ específico deste contrato (pode variar por filial)."
+  },
+  {
    "fieldname": "cb_cliente",
    "fieldtype": "Column Break"
   },
@@ -133,6 +174,19 @@
    "fieldtype": "Link",
    "label": "Unidade de Atendimento",
    "options": "Unidade Atendimento"
+  },
+  {
+   "fieldname": "municipio",
+   "fieldtype": "Data",
+   "label": "Município",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "uf",
+   "fieldtype": "Select",
+   "label": "UF",
+   "options": "\nAC\nAL\nAP\nAM\nBA\nCE\nDF\nES\nGO\nMA\nMT\nMS\nMG\nPA\nPB\nPR\nPE\nPI\nRJ\nRN\nRS\nRO\nRR\nSC\nSP\nSE\nTO",
+   "in_standard_filter": 1
   },
   {
    "fieldname": "sec_vigencia",
@@ -205,7 +259,7 @@
    "fieldname": "status_contrato",
    "fieldtype": "Select",
    "label": "Status do Contrato",
-   "options": "Em formalização\nEm mobilização\nOperação assistida\nAtivo\nAtivo com atenção\nCrítico\nEm renovação\nSuspenso\nEm encerramento\nEncerrado",
+   "options": "Em formalização\nEm mobilização\nOperação assistida\nAtivo\nAtivo com atenção\nCrítico\nVencido\nEm renovação\nSuspenso\nEm encerramento\nEncerrado",
    "in_list_view": 1,
    "default": "Em formalização"
   },
@@ -316,6 +370,46 @@
    "label": "Observações Financeiras"
   },
   {
+   "fieldname": "sec_taxas",
+   "fieldtype": "Section Break",
+   "label": "Composição de Taxas",
+   "description": "Estrutura de taxas do contrato (controle do backlog de contratos)."
+  },
+  {
+   "fieldname": "taxa_admin_contratual",
+   "fieldtype": "Percent",
+   "label": "Taxa Administrativa Contratual (%)",
+   "description": "Taxa de administração contratual/base (coluna taxa_adm da planilha)."
+  },
+  {
+   "fieldname": "taxa_admin_bruta",
+   "fieldtype": "Percent",
+   "label": "Taxa Administrativa (bruta) (%)",
+   "description": "Taxa administrativa efetiva. Base do cálculo da Taxa de Legalidade."
+  },
+  {
+   "fieldname": "percentual_impostos",
+   "fieldtype": "Percent",
+   "label": "Impostos (%)"
+  },
+  {
+   "fieldname": "cb_taxas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "taxa_legalidade",
+   "fieldtype": "Percent",
+   "label": "Taxa de Legalidade (%)",
+   "read_only": 1,
+   "description": "Calculada: Taxa Administrativa (bruta) + Impostos."
+  },
+  {
+   "fieldname": "taxa_comercial",
+   "fieldtype": "Percent",
+   "label": "Taxa Comercial (%)",
+   "description": "Percentual recebido pelo dono do contrato (quem fechou o negócio)."
+  },
+  {
    "fieldname": "sec_op",
    "fieldtype": "Section Break",
    "label": "Parâmetros Operacionais"
@@ -329,6 +423,13 @@
    "fieldname": "especialidades",
    "fieldtype": "Small Text",
    "label": "Especialidades"
+  },
+  {
+   "fieldname": "especialidade_principal",
+   "fieldtype": "Select",
+   "label": "Especialidade Principal",
+   "options": "\nEnfermeiro\nMédico\nTéc. de Enfermagem\nFarmacêutico\nNutricionista\nFisioterapeuta\nCategorias (múltiplas)\nOutro",
+   "in_standard_filter": 1
   },
   {
    "fieldname": "volume_estimado",

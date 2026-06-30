@@ -1,0 +1,37 @@
+# =============================================================================
+# Override de DESENVOLVIMENTO: monta o código-fonte local do app
+# (apps/coaph_contract_ops) por cima do app baked na imagem, para iterar ao
+# vivo sem rebuild. Ao final, gerar a imagem durável com build-local.sh.
+#
+# Uso:
+#   docker compose -f compose.yaml -f compose.tls.yaml -f compose.dev.yaml --env-file .env up -d
+# Depois de mudar DocType/JSON:  bench --site <site> migrate
+# Depois de mudar JS/assets:      bench build --app coaph_contract_ops
+# =============================================================================
+
+x-dev-volumes: &dev_volumes
+  - sites:/home/frappe/frappe-bench/sites
+  - ../apps/coaph_contract_ops:/home/frappe/frappe-bench/apps/coaph_contract_ops
+
+services:
+  configurator:
+    pull_policy: missing
+    volumes: *dev_volumes
+  backend:
+    pull_policy: missing
+    volumes: *dev_volumes
+  frontend:
+    pull_policy: missing
+    volumes: *dev_volumes
+  websocket:
+    pull_policy: missing
+    volumes: *dev_volumes
+  scheduler:
+    pull_policy: missing
+    volumes: *dev_volumes
+  queue-short:
+    pull_policy: missing
+    volumes: *dev_volumes
+  queue-long:
+    pull_policy: missing
+    volumes: *dev_volumes
