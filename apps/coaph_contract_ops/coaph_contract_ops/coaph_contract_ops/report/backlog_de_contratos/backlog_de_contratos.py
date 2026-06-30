@@ -21,7 +21,7 @@ def get_columns():
         {"label": _("Nº Contrato"), "fieldname": "numero_contrato", "fieldtype": "Data", "width": 100},
         {"label": _("Título"), "fieldname": "titulo_contrato", "fieldtype": "Data", "width": 220},
         {"label": _("Sigla"), "fieldname": "sigla_contrato", "fieldtype": "Data", "width": 90},
-        {"label": _("Contratante"), "fieldname": "contratante", "fieldtype": "Link", "options": "Contratante COAPH", "width": 130},
+        {"label": _("Contratante"), "fieldname": "contratante_nome", "fieldtype": "Data", "width": 150},
         {"label": _("Município"), "fieldname": "municipio", "fieldtype": "Data", "width": 110},
         {"label": _("UF"), "fieldname": "uf", "fieldtype": "Data", "width": 50},
         {"label": _("Status"), "fieldname": "status_contrato", "fieldtype": "Data", "width": 110},
@@ -46,7 +46,7 @@ def get_data(filters):
         if filters.get(campo):
             conditions[campo] = filters[campo]
 
-    return frappe.get_list(
+    linhas = frappe.get_list(
         "Contrato 360",
         filters=conditions,
         fields=[
@@ -60,3 +60,11 @@ def get_data(filters):
         order_by="vigencia_fim asc",
         limit_page_length=0,
     )
+
+    # Resolve o nome do contratante (a coluna Link mostraria só o código CTNT-#####).
+    ids = {l.contratante for l in linhas if l.contratante}
+    nomes = dict(frappe.get_all("Contratante COAPH", filters={"name": ["in", list(ids)]},
+                                fields=["name", "nome_contratante"], as_list=True)) if ids else {}
+    for l in linhas:
+        l["contratante_nome"] = nomes.get(l.contratante, l.contratante)
+    return linhas

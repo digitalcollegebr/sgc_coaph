@@ -24,15 +24,23 @@ def concluir_setup_wizard():
         "date_format": "dd/mm/yyyy",
         "number_format": "#.###,##",
     })
-    frappe.db.set_single_value("Global Defaults", {
-        "default_currency": "BRL",
-        "country": "Brazil",
-    })
-    # Flag global consultada em algumas versões para pular o wizard.
+    # Global Defaults via doc.save() para disparar o on_update, que propaga o
+    # default global 'currency' (sem isso os campos Currency renderizam em ₹/INR).
+    gd = frappe.get_doc("Global Defaults")
+    gd.default_currency = "BRL"
+    gd.country = "Brazil"
+    gd.save(ignore_permissions=True)
+    # NA v15+ o boot usa frappe.is_setup_complete(), que exige is_setup_complete=1
+    # nos registros de Installed Application de frappe e erpnext. Sem isso, todo
+    # login é redirecionado para /desk/setup-wizard.
+    for app in ("frappe", "erpnext"):
+        if frappe.db.exists("Installed Application", {"app_name": app}):
+            frappe.db.set_value("Installed Application", {"app_name": app},
+                                "is_setup_complete", 1)
     frappe.db.set_default("desktop:home_page", "workspace")
     frappe.db.commit()
     frappe.clear_cache()
-    print("Setup do site concluído (setup_complete=1, padrões BR).")
+    print("Setup do site concluído (is_setup_complete=1 p/ frappe+erpnext, padrões BR).")
 
 
 def criar_gestor_contratos():
@@ -53,7 +61,9 @@ def criar_gestor_contratos():
         user = frappe.get_doc("User", RAYLSSON_EMAIL)
         print(f"Usuário já existe: {RAYLSSON_EMAIL}")
 
-    for role in ("SGC Administrador",):
+    # SGC Administrador = vê tudo. SGC Operacao/Comercial = papéis exigidos pelo
+    # Workflow Contrato 360 (allow_edit) para poder EDITAR e mover os contratos.
+    for role in ("SGC Administrador", "SGC Operacao", "SGC Comercial"):
         if not any(r.role == role for r in user.get("roles", [])):
             user.append("roles", {"role": role})
     user.save(ignore_permissions=True)

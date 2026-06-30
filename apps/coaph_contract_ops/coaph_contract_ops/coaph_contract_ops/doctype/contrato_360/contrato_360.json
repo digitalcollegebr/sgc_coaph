@@ -131,7 +131,7 @@
    "fieldname": "origem",
    "fieldtype": "Select",
    "label": "Origem",
-   "options": "Licitação\nBID privado\nProposta direta\nRenovação\nAditivo"
+   "options": "\nLicitação\nBID privado\nProposta direta\nRenovação\nAditivo"
   },
   {
    "fieldname": "modalidade_contratacao",
