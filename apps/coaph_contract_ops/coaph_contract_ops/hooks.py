@@ -96,6 +96,8 @@ scheduler_events = {
     "daily": [
         "coaph_contract_ops.coaph_contract_ops.automation.scheduler.verificar_renovacoes",
         "coaph_contract_ops.coaph_contract_ops.automation.scheduler.verificar_mobilizacoes_atrasadas",
+        # Sincroniza contratos do GCOOP (só roda se a integração estiver ativa).
+        "coaph_contract_ops.integrations.gcoop.sync.sincronizar_agendado",
     ],
 }
 
