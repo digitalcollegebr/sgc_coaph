@@ -10,6 +10,31 @@ import frappe
 RAYLSSON_EMAIL = "licitacao@coaph.com.br"
 
 
+def concluir_setup_wizard():
+    """Marca o setup do site como concluído com os padrões brasileiros.
+
+    Sem isso, o Frappe redireciona TODO login para /desk/setup-wizard, e
+    usuários não-administradores recebem 'Not permitted'. Idempotente.
+    """
+    frappe.db.set_single_value("System Settings", {
+        "setup_complete": 1,
+        "country": "Brazil",
+        "time_zone": "America/Fortaleza",
+        "language": "pt-BR",
+        "date_format": "dd/mm/yyyy",
+        "number_format": "#.###,##",
+    })
+    frappe.db.set_single_value("Global Defaults", {
+        "default_currency": "BRL",
+        "country": "Brazil",
+    })
+    # Flag global consultada em algumas versões para pular o wizard.
+    frappe.db.set_default("desktop:home_page", "workspace")
+    frappe.db.commit()
+    frappe.clear_cache()
+    print("Setup do site concluído (setup_complete=1, padrões BR).")
+
+
 def criar_gestor_contratos():
     """Cria o usuário do gestor de contratos (Raylsson) como SGC Administrador
     e o define como gestor padrão dos contratos sem gestor."""
