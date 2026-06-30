@@ -1,0 +1,133 @@
+/* ============================================================================
+   SGC COAPH — Identidade visual da Coaph (sobre Frappe/ERPNext).
+   Sem fork do core: só sobrescreve CSS variables e alguns seletores.
+   Paleta oficial (coaph.com.br):
+     vermelho primário  #BD0717
+     vermelho escuro    #7C0813
+     cinza texto        #404040
+   ============================================================================ */
+
+:root,
+[data-theme="light"] {
+	--coaph-red: #bd0717;
+	--coaph-red-dark: #7c0813;
+	--coaph-red-soft: #fdeaec;
+	--coaph-ink: #404040;
+
+	/* Variáveis do Frappe usadas em botões/links/realces */
+	--primary: var(--coaph-red);
+	--primary-color: var(--coaph-red);
+	--text-on-primary: #ffffff;
+	--btn-primary: var(--coaph-red);
+	--checkbox-color: var(--coaph-red);
+	--sidebar-select-color: var(--coaph-red-soft);
+}
+
+/* ---- Botões primários -------------------------------------------------- */
+.btn-primary,
+.btn.btn-primary {
+	background-color: var(--coaph-red) !important;
+	border-color: var(--coaph-red) !important;
+	color: #fff !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+	background-color: var(--coaph-red-dark) !important;
+	border-color: var(--coaph-red-dark) !important;
+}
+
+/* ---- Links e textos de realce ----------------------------------------- */
+a,
+.text-primary,
+.ellipsis > a {
+	color: var(--coaph-red);
+}
+a:hover {
+	color: var(--coaph-red-dark);
+}
+
+/* ---- Navbar branca com leve divisória --------------------------------- */
+.navbar,
+header .navbar {
+	background-color: #ffffff !important;
+	border-bottom: 1px solid var(--border-color, #ebeef0);
+}
+/* logo da navbar (tile vermelho) com respiro e altura confortável */
+.navbar .app-logo,
+.navbar-brand img {
+	height: 26px !important;
+	width: auto !important;
+	border-radius: 5px;
+}
+/* nome do app ao lado do logo, no vermelho da marca */
+.navbar-brand .app-name,
+.navbar .navbar-brand {
+	color: var(--coaph-red);
+	font-weight: 600;
+}
+
+/* ---- Item de menu ativo na lateral ------------------------------------ */
+.standard-sidebar-item.selected,
+.desk-sidebar-item.selected,
+.sidebar-item-container .selected {
+	background-color: var(--coaph-red-soft) !important;
+}
+.standard-sidebar-item.selected a,
+.standard-sidebar-item.selected .sidebar-item-label,
+.desk-sidebar-item.selected .item-anchor {
+	color: var(--coaph-red-dark) !important;
+	font-weight: 600;
+}
+
+/* ---- Controles de formulário (acento) --------------------------------- */
+input[type="checkbox"],
+input[type="radio"] {
+	accent-color: var(--coaph-red);
+}
+
+/* ---- Tela de login ----------------------------------------------------- */
+.page-card .btn-primary,
+.login-content .btn-primary {
+	background-color: var(--coaph-red) !important;
+	border-color: var(--coaph-red) !important;
+}
+.login-content .page-card-head .text-muted,
+.login-content a {
+	color: var(--coaph-red);
+}
+/* logo do login (tile vermelho) com cantos suaves */
+.login-content img.app-logo,
+.for-login img {
+	border-radius: 8px;
+}
+
+/* ---- Cabeçalho da barra lateral: tile vermelho da Coaph --------------- */
+.body-sidebar .header-logo,
+.standard-sidebar .header-logo,
+.app-switcher-dropdown .header-logo {
+	background-image: url("/assets/coaph_contract_ops/images/coaph/coaph-favicon.png") !important;
+	background-size: cover !important;
+	background-position: center !important;
+	border-radius: 6px !important;
+	overflow: hidden;
+}
+/* esconde a inicial/avatar gerada por baixo do tile */
+.body-sidebar .header-logo > *,
+.standard-sidebar .header-logo > * {
+	visibility: hidden !important;
+}
+/* nome do app no cabeçalho no vermelho da marca */
+.body-sidebar .header-title,
+.standard-sidebar .header-title {
+	color: var(--coaph-red) !important;
+	font-weight: 700;
+}
+
+/* ---- Cockpit Executivo: cabeçalho no tom da marca --------------------- */
+.coaph-cockpit h1,
+.coaph-cockpit .cockpit-title,
+.workspace-title {
+	color: var(--coaph-red-dark);
+}

@@ -1,5 +1,5 @@
 app_name = "coaph_contract_ops"
-app_title = "COAPH Contract Ops"
+app_title = "SGC COAPH"
 app_publisher = "COAPH"
 app_description = "SGC COAPH — Gestão 360 de Contratos"
 app_email = "ti@coaph.example.org"
@@ -7,6 +7,26 @@ app_license = "Projeto interno COAPH"
 
 # Documentação amigável do produto
 # Nome do produto: SGC COAPH — Gestão 360 de Contratos
+
+# ------------------------------------------------------------------
+# Identidade visual da Coaph (sem fork do core).
+# CSS de marca injetado no Desk e no portal/login; logo nas telas.
+# Os assets em /assets/coaph_contract_ops/... vêm de public/ após build.
+# ------------------------------------------------------------------
+app_logo_url = "/assets/coaph_contract_ops/images/coaph/coaph-logo-color.png"
+app_include_css = "/assets/coaph_contract_ops/css/coaph_brand.css"
+web_include_css = "/assets/coaph_contract_ops/css/coaph_brand.css"
+
+# Registro do "app" na tela de apps / cabeçalho da barra lateral (v15+):
+# define a logo (tile vermelho) e o nome "SGC COAPH" no switcher/launcher.
+add_to_apps_screen = [
+    {
+        "name": "coaph_contract_ops",
+        "logo": "/assets/coaph_contract_ops/images/coaph/coaph-logo-color.png",
+        "title": "SGC COAPH",
+        "route": "/app/sgc-coaph",
+    }
+]
 
 # ------------------------------------------------------------------
 # Fixtures — exporta as customizações deste app (nunca toca o core).

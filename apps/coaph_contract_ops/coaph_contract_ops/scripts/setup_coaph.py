@@ -91,7 +91,7 @@ def concluir_setup_wizard():
     # NA v15+ o boot usa frappe.is_setup_complete(), que exige is_setup_complete=1
     # nos registros de Installed Application de frappe e erpnext. Sem isso, todo
     # login é redirecionado para /desk/setup-wizard.
-    for app in ("frappe", "erpnext"):
+    for app in ("frappe", "erpnext", "coaph_contract_ops"):
         if frappe.db.exists("Installed Application", {"app_name": app}):
             frappe.db.set_value("Installed Application", {"app_name": app},
                                 "is_setup_complete", 1)
@@ -99,6 +99,69 @@ def concluir_setup_wizard():
     frappe.db.commit()
     frappe.clear_cache()
     print("Setup do site concluído (is_setup_complete=1 p/ frappe+erpnext, padrões BR).")
+
+
+LOGO_COR = "/assets/coaph_contract_ops/images/coaph/coaph-logo-color.png"
+LOGO_BRANCA = "/assets/coaph_contract_ops/images/coaph/coaph-logo-white.png"
+FAVICON = "/assets/coaph_contract_ops/images/coaph/coaph-favicon.png"
+APP_NAME = "SGC COAPH"
+
+
+def aplicar_identidade_visual():
+    """Aplica a identidade da Coaph nas configurações que vivem no banco
+    (logo, favicon, splash, nome do app) e cria o Letter Head para impressão.
+    Idempotente. O CSS de marca e o logo das telas vêm dos hooks/assets.
+    """
+    # Navbar
+    nav = frappe.get_doc("Navbar Settings")
+    nav.app_logo = LOGO_COR
+    nav.save(ignore_permissions=True)
+
+    # Website / login / splash / favicon / nome
+    ws = frappe.get_doc("Website Settings")
+    ws.app_name = APP_NAME
+    ws.app_logo = LOGO_COR
+    ws.favicon = FAVICON
+    ws.splash_image = LOGO_COR
+    ws.footer_logo = LOGO_BRANCA
+    ws.save(ignore_permissions=True)
+
+    frappe.db.set_single_value("System Settings", "app_name", APP_NAME)
+
+    # Letter Head para impressão de contratos/documentos
+    _criar_letter_head()
+
+    frappe.db.commit()
+    frappe.clear_cache()
+    print(f"Identidade visual aplicada: logo/favicon/splash + app_name='{APP_NAME}' + Letter Head COAPH.")
+
+
+def _criar_letter_head():
+    nome = "COAPH"
+    cabecalho = (
+        '<div style="display:flex;align-items:center;gap:12px;'
+        'border-bottom:3px solid #bd0717;padding-bottom:8px;">'
+        f'<img src="{LOGO_COR}" style="height:48px;border-radius:6px;">'
+        '<div style="line-height:1.2;">'
+        '<div style="font-size:16px;font-weight:700;color:#7c0813;">COAPH</div>'
+        '<div style="font-size:11px;color:#404040;">Cooperativa de Atendimento Pré e Hospitalar</div>'
+        '</div></div>'
+    )
+    rodape = (
+        '<div style="border-top:1px solid #ddd;padding-top:6px;margin-top:8px;'
+        'font-size:10px;color:#888;text-align:center;">'
+        'SGC COAPH — Gestão 360 de Contratos · documento gerado pelo sistema</div>'
+    )
+    if frappe.db.exists("Letter Head", nome):
+        lh = frappe.get_doc("Letter Head", nome)
+    else:
+        lh = frappe.new_doc("Letter Head")
+        lh.letter_head_name = nome
+    lh.content = cabecalho
+    lh.footer = rodape
+    lh.is_default = 1
+    lh.disabled = 0
+    lh.save(ignore_permissions=True)
 
 
 def criar_gestor_contratos():
