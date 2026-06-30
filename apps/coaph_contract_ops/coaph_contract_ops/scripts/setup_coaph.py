@@ -9,6 +9,64 @@ import frappe
 
 RAYLSSON_EMAIL = "licitacao@coaph.com.br"
 
+MODULO_COAPH = "COAPH Contract Ops"
+MODULE_PROFILE = "SGC - Apenas Contratos"
+WORKSPACE_SGC = "SGC COAPH"
+
+
+def configurar_navegacao_sgc():
+    """Fase 1 + 2 da limpeza de UX:
+
+    1. Bloqueia TODOS os módulos não-COAPH (sujeira do ERPNext/Frappe) para os
+       usuários SGC, via um Module Profile reutilizável. O Administrator e
+       qualquer System Manager ficam intocados (veem tudo).
+    2. Define o workspace inicial dos usuários SGC como 'SGC COAPH' (o login
+       cai direto no Cockpit, nunca no 'Home' do ERPNext).
+
+    Idempotente: pode rodar a cada deploy / para cada novo usuário SGC.
+    """
+    bloqueados = [m for m in frappe.get_all("Module Def", pluck="name")
+                  if m != MODULO_COAPH]
+
+    # 1) Module Profile reutilizável -------------------------------------------
+    if frappe.db.exists("Module Profile", MODULE_PROFILE):
+        mp = frappe.get_doc("Module Profile", MODULE_PROFILE)
+        mp.set("block_modules", [])
+    else:
+        mp = frappe.new_doc("Module Profile")
+        mp.module_profile_name = MODULE_PROFILE
+    for m in bloqueados:
+        mp.append("block_modules", {"module": m})
+    mp.save(ignore_permissions=True)
+
+    # 2) Aplica aos usuários SGC (papel 'SGC %'), exceto System Manager/Admin ---
+    sgc_users = set(frappe.get_all(
+        "Has Role", filters={"role": ["like", "SGC %"], "parenttype": "User"},
+        pluck="parent"))
+    alvo = []
+    for email in sgc_users:
+        if email in ("Administrator", "Guest"):
+            continue
+        papeis = set(frappe.get_roles(email))
+        if "System Manager" in papeis:
+            continue  # admin técnico vê tudo
+        alvo.append(email)
+
+    for email in alvo:
+        user = frappe.get_doc("User", email)
+        user.module_profile = MODULE_PROFILE
+        user.set("block_modules", [])
+        for m in bloqueados:
+            user.append("block_modules", {"module": m})
+        user.default_workspace = WORKSPACE_SGC
+        user.save(ignore_permissions=True)
+
+    frappe.db.commit()
+    frappe.clear_cache()
+    print(f"Navegação SGC configurada: {len(bloqueados)} módulos bloqueados; "
+          f"usuários ajustados: {alvo or '(nenhum)'}; workspace inicial = {WORKSPACE_SGC}.")
+    return {"bloqueados": len(bloqueados), "usuarios": alvo}
+
 
 def concluir_setup_wizard():
     """Marca o setup do site como concluído com os padrões brasileiros.
