@@ -23,6 +23,16 @@ services:
   frontend:
     pull_policy: missing
     volumes: *dev_volumes
+    # DEV: o app é bind-montado, mas o sites/assets do frontend vem da imagem
+    # (overlay) e não inclui os assets novos do coaph. Recriamos o symlink em
+    # todo start (senão a marca/CSS quebram ao recriar o container).
+    command:
+      - sh
+      - -c
+      - >
+        ln -sfn /home/frappe/frappe-bench/apps/coaph_contract_ops/coaph_contract_ops/public
+        /home/frappe/frappe-bench/sites/assets/coaph_contract_ops;
+        exec nginx-entrypoint.sh
   websocket:
     pull_policy: missing
     volumes: *dev_volumes
