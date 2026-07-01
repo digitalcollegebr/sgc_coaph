@@ -1,0 +1,19 @@
+{
+ "app": "coaph_contract_ops",
+ "bg_color": "red",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon": "file",
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Contratos",
+ "link": "/app/sgc-coaph",
+ "link_type": "External",
+ "logo_url": "/assets/coaph_contract_ops/images/coaph/coaph-logo-color.png",
+ "name": "Contratos",
+ "owner": "Administrator",
+ "restrict_removal": 1,
+ "roles": [],
+ "standard": 1
+}

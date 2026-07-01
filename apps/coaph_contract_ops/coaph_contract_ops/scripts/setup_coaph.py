@@ -240,6 +240,40 @@ def aplicar_traducoes_ptbr():
     print(f"Traduções pt-BR aplicadas: {criadas} novas de {len(TRADUCOES_PTBR)}; idioma pt-BR em usuários e sistema.")
 
 
+def criar_sidebar_contratos():
+    """Workspace Sidebar 'Contratos' — necessário APENAS para o gate do launcher:
+    o Desktop Icon 'Contratos' (icon_type=Link) só aparece se existir um
+    Workspace Sidebar homônimo com >=1 item que o usuário pode ler
+    (get_desktop_icons, linhas 172-180 da v16). O clique do ícone usa o link
+    External (/app/sgc-coaph). standard=0 => não é removido no migrate.
+    Idempotente."""
+    nome = "Contratos"
+    itens = [
+        {"type": "Link", "label": "Cockpit Executivo", "link_type": "Workspace", "link_to": WORKSPACE_SGC},
+        {"type": "Link", "label": "Contrato 360", "link_type": "DocType", "link_to": "Contrato 360"},
+        {"type": "Link", "label": "Oportunidades", "link_type": "DocType", "link_to": "Oportunidade COAPH"},
+        {"type": "Link", "label": "Contratantes", "link_type": "DocType", "link_to": "Contratante COAPH"},
+        {"type": "Link", "label": "Painel Executivo", "link_type": "Page", "link_to": "painel-executivo-contratos"},
+        {"type": "Link", "label": "Backlog de Contratos", "link_type": "Report", "link_to": "Backlog de Contratos"},
+    ]
+    if frappe.db.exists("Workspace Sidebar", nome):
+        doc = frappe.get_doc("Workspace Sidebar", nome)
+        doc.set("items", [])
+    else:
+        doc = frappe.new_doc("Workspace Sidebar")
+        doc.title = nome
+    doc.app = "coaph_contract_ops"
+    doc.standard = 0
+    doc.header_icon = "file"
+    for i, it in enumerate(itens, start=1):
+        it["idx"] = i
+        doc.append("items", it)
+    doc.save(ignore_permissions=True)
+    frappe.db.commit()
+    frappe.clear_cache()
+    print(f"Workspace Sidebar '{nome}' criado/atualizado ({len(itens)} itens) — habilita o ícone Contratos.")
+
+
 def aplicar_identidade_visual():
     """Aplica a identidade da Coaph nas configurações que vivem no banco
     (logo, favicon, splash, nome do app) e cria o Letter Head para impressão.

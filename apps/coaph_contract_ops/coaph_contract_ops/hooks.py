@@ -28,6 +28,12 @@ add_to_apps_screen = [
     }
 ]
 
+# Launcher /desk: mantém só o ícone "Contratos" para usuários operacionais
+# (Administrator/System Manager veem tudo). Ver coaph_contract_ops/boot.py.
+extend_bootinfo = [
+    "coaph_contract_ops.boot.filtrar_launcher",
+]
+
 # ------------------------------------------------------------------
 # Fixtures — exporta as customizações deste app (nunca toca o core).
 # Filtramos por módulo/nome para não arrastar registros de outros apps.
