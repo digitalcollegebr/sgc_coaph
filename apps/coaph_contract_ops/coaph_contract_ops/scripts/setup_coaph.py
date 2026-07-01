@@ -28,6 +28,10 @@ def configurar_navegacao_sgc():
     bloqueados = [m for m in frappe.get_all("Module Def", pluck="name")
                   if m != MODULO_COAPH]
 
+    # 0) App padrão do sistema -> login/landing cai no cockpit (/app/sgc-coaph,
+    #    via a rota do add_to_apps_screen). Evita o launcher de apps do ERPNext.
+    frappe.db.set_single_value("System Settings", "default_app", "coaph_contract_ops")
+
     # 1) Module Profile reutilizável -------------------------------------------
     if frappe.db.exists("Module Profile", MODULE_PROFILE):
         mp = frappe.get_doc("Module Profile", MODULE_PROFILE)
@@ -58,7 +62,12 @@ def configurar_navegacao_sgc():
         user.set("block_modules", [])
         for m in bloqueados:
             user.append("block_modules", {"module": m})
-        user.default_workspace = WORKSPACE_SGC
+        # NÃO usar default_workspace com o nome "SGC COAPH": o Frappe não
+        # converte o espaço em hífen na rota (vira /app/sgc%20coaph -> erro
+        # "No permission for Page"). Em vez disso, default_app aponta para o
+        # nosso app, cuja rota registrada (add_to_apps_screen) é /app/sgc-coaph.
+        user.default_workspace = ""
+        user.default_app = "coaph_contract_ops"
         user.save(ignore_permissions=True)
 
     frappe.db.commit()
