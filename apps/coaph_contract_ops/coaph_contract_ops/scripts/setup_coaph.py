@@ -107,6 +107,130 @@ FAVICON = "/assets/coaph_contract_ops/images/coaph/coaph-favicon.png"
 APP_NAME = "SGC COAPH"
 
 
+# Traduções pt-BR de strings comuns da UI que o Frappe entrega sem tradução.
+# Entram como registros do DocType "Translation" (mesclados em runtime, duráveis).
+TRADUCOES_PTBR = {
+    # Login
+    "Login": "Entrar",
+    "Login to {0}": "Entrar em {0}",
+    "Forgot Password?": "Esqueceu a senha?",
+    "Login with Email Link": "Entrar com link por e-mail",
+    "Send login link": "Enviar link de acesso",
+    "Sign Up": "Cadastrar",
+    "Show": "Mostrar",
+    "Hide": "Ocultar",
+    "Email": "E-mail",
+    "Password": "Senha",
+    "Back to Login": "Voltar ao login",
+    # Navegação / chrome
+    "Search": "Buscar",
+    "Search or type a command": "Buscar ou digitar um comando",
+    "Notifications": "Notificações",
+    "Help": "Ajuda",
+    "Settings": "Configurações",
+    "My Settings": "Minhas Configurações",
+    "Logout": "Sair",
+    "Toggle Theme": "Alternar Tema",
+    "About": "Sobre",
+    "Edit Profile": "Editar Perfil",
+    "Reset Desktop Layout": "Redefinir Layout",
+    "Apps": "Aplicativos",
+    "Home": "Início",
+    "Loading...": "Carregando...",
+    # Lista / relatório
+    "Add": "Adicionar",
+    "New": "Novo",
+    "Refresh": "Atualizar",
+    "Menu": "Menu",
+    "Filter By": "Filtrar por",
+    "Sort By": "Ordenar por",
+    "Last Updated On": "Última Atualização",
+    "Created On": "Criado em",
+    "Assigned To": "Atribuído a",
+    "List View": "Lista",
+    "Report View": "Relatório",
+    "Load More": "Carregar mais",
+    "Select All": "Selecionar tudo",
+    "Actions": "Ações",
+    "Bulk Edit": "Edição em massa",
+    "No records found": "Nenhum registro encontrado",
+    "results": "resultados",
+    "Saved Filters": "Filtros Salvos",
+    # Formulário
+    "Save": "Salvar",
+    "Cancel": "Cancelar",
+    "Submit": "Registrar",
+    "Edit": "Editar",
+    "Duplicate": "Duplicar",
+    "Print": "Imprimir",
+    "Attachments": "Anexos",
+    "Comments": "Comentários",
+    "Add a comment": "Adicionar um comentário",
+    "Type a reply / comment": "Escreva uma resposta / comentário",
+    "Assign": "Atribuir",
+    "Assign To": "Atribuir a",
+    "Share": "Compartilhar",
+    "Tags": "Etiquetas",
+    "New Email": "Novo E-mail",
+    "Activity": "Atividade",
+    "Connections": "Conexões",
+    "Created": "Criado",
+    "You": "Você",
+    "just now": "agora",
+    "Not Saved": "Não Salvo",
+    "This form is not editable due to a Workflow.":
+        "Este formulário não é editável devido a um Workflow.",
+    # Comuns
+    "Yes": "Sim",
+    "No": "Não",
+    "Close": "Fechar",
+    "Confirm": "Confirmar",
+    "Are you sure you want to proceed?": "Tem certeza de que deseja continuar?",
+    "Success": "Sucesso",
+    "Error": "Erro",
+    "Warning": "Aviso",
+    "Please try again": "Tente novamente",
+    "Not permitted": "Sem permissão",
+    "Add Row": "Adicionar Linha",
+    "Delete": "Excluir",
+    "Today": "Hoje",
+    "Clear": "Limpar",
+    "Apply": "Aplicar",
+    "Download": "Baixar",
+    "Export": "Exportar",
+    "Import": "Importar",
+}
+
+
+def aplicar_traducoes_ptbr():
+    """Garante o idioma pt-BR e supre traduções comuns ausentes (via Translation).
+    Idempotente."""
+    frappe.db.set_single_value("System Settings", "language", "pt-BR")
+    # Idioma em todos os usuários do sistema
+    for u in frappe.get_all("User", filters={"user_type": "System User"}, pluck="name"):
+        if u != "Guest":
+            frappe.db.set_value("User", u, "language", "pt-BR", update_modified=False)
+
+    criadas = 0
+    for origem, destino in TRADUCOES_PTBR.items():
+        existe = frappe.db.exists("Translation",
+                                  {"language": "pt-BR", "source_text": origem, "context": ["in", ["", None]]})
+        if existe:
+            frappe.db.set_value("Translation", existe, "translated_text", destino)
+            continue
+        frappe.get_doc({
+            "doctype": "Translation",
+            "language": "pt-BR",
+            "source_text": origem,
+            "translated_text": destino,
+        }).insert(ignore_permissions=True)
+        criadas += 1
+
+    frappe.db.commit()
+    frappe.clear_cache()
+    print(f"Traduções pt-BR aplicadas: {criadas} novas de {len(TRADUCOES_PTBR)}; idioma pt-BR em usuários e sistema.")
+
+
 def aplicar_identidade_visual():
     """Aplica a identidade da Coaph nas configurações que vivem no banco
     (logo, favicon, splash, nome do app) e cria o Letter Head para impressão.
