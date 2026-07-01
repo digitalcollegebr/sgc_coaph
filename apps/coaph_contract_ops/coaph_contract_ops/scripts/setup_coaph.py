@@ -240,6 +240,45 @@ def aplicar_traducoes_ptbr():
     print(f"Traduções pt-BR aplicadas: {criadas} novas de {len(TRADUCOES_PTBR)}; idioma pt-BR em usuários e sistema.")
 
 
+ERROS_PLANILHA = [
+    ("1418", "Taxa de Legalidade na planilha está como 1,00% (provável erro de digitação). "
+             "O sistema calcula 19,95% (Adm bruta + Impostos). Confirmar o valor correto na origem."),
+    ("1498", "Fim da Vigência na planilha está malformado ('115-10-2026') e ficou vazio. "
+             "Preencher a data correta de término."),
+    ("1522", "Fim da Vigência igual ao Início (2025-10-01), inválido — ficou vazio. "
+             "Informar a data real de término da vigência."),
+]
+
+
+def sinalizar_erros_planilha():
+    """Cria ToDos para o gestor (Raylsson) sobre registros com erro de origem
+    na planilha. Idempotente (não duplica). Linka ao Contrato 360."""
+    criados = 0
+    for gcoop, msg in ERROS_PLANILHA:
+        nome = frappe.db.get_value("Contrato 360", {"codigo_gcoop": gcoop}, "name")
+        if not nome:
+            continue
+        desc = f"[Backlog gcoop {gcoop}] {msg}"
+        ja = frappe.db.exists("ToDo", {
+            "reference_type": "Contrato 360", "reference_name": nome,
+            "allocated_to": RAYLSSON_EMAIL, "status": "Open",
+        })
+        if ja:
+            frappe.db.set_value("ToDo", ja, "description", desc)
+            continue
+        frappe.get_doc({
+            "doctype": "ToDo",
+            "allocated_to": RAYLSSON_EMAIL,
+            "reference_type": "Contrato 360",
+            "reference_name": nome,
+            "priority": "High",
+            "description": desc,
+        }).insert(ignore_permissions=True)
+        criados += 1
+    frappe.db.commit()
+    print(f"Erros de planilha sinalizados ao gestor: {criados} ToDos criados (de {len(ERROS_PLANILHA)}).")
+
+
 def criar_sidebar_contratos():
     """Workspace Sidebar 'Contratos' — necessário APENAS para o gate do launcher:
     o Desktop Icon 'Contratos' (icon_type=Link) só aparece se existir um

@@ -77,12 +77,27 @@ def _upsert_oportunidade(rec, report):
     valor = mapping.norm_money(rec.get("valor_global"))
     nome = frappe.db.get_value("Oportunidade COAPH", {"titulo": titulo}, "name")
     doc = frappe.get_doc("Oportunidade COAPH", nome) if nome else frappe.new_doc("Oportunidade COAPH")
+    # Oportunidade não tem campos de taxas/CNPJ/gcoop; preservamos TODO o dado
+    # do backlog na descrição para nada se perder até virar Contrato 360.
+    def _v(k):
+        x = rec.get(k)
+        return (str(x).strip() if x is not None else "") or "—"
+    descricao = (
+        "Importado do backlog (NEGOCIOS).\n"
+        f"gcoop: {_v('gcoop')} | Nº contrato: {_v('numero_contrato')} | CNPJ: {_v('cnpj')}\n"
+        f"Modalidade: {_v('modalidade_raw')} | Especialidade: {_v('especialidade_raw')}\n"
+        f"Localidade: {_v('municipio')}/{_v('uf')} | Cooperados: {_v('qtd_cooperados')}\n"
+        f"Taxas — Adm contratual: {_v('taxa_adm_contratual')} | Adm bruta: {_v('taxa_adm_bruta')} | "
+        f"Impostos: {_v('impostos')} | Legalidade: {_v('legalidade_origem')} | "
+        f"Comercial: {_v('taxa_comercial')}"
+    )
     doc.update({
         "titulo": titulo, "contratante": contratante,
         "tipo_cliente": natureza if natureza in ("Público", "Privado") else None,
         "data_identificacao": mapping.norm_date(rec.get("vigencia_inicio")),
         "valor_estimado_anual": valor,
         "valor_estimado_mensal": (valor / 12.0) if valor else None,
+        "descricao": descricao,
     })
     doc.save(ignore_permissions=True)
     if doc.status != "Oportunidade registrada":
