@@ -1,0 +1,29 @@
+# =============================================================================
+# Override de ingress via REVERSE PROXY COMPARTILHADO (nginx-proxy).
+# Substitui o Caddy próprio (compose.tls.yaml): o frontend Frappe deixa de
+# expor portas no host e passa a ser publicado pelo proxy compartilhado
+# (projeto /root/reverse-proxy) via a rede externa "webproxy".
+#
+# Uso (canônico em dev):
+#   docker compose -f compose.yaml -f compose.dev.yaml -f compose.proxy.yaml \
+#     --env-file .env up -d --remove-orphans
+# =============================================================================
+
+services:
+  frontend:
+    # Sem portas no host: o tráfego entra pelo nginx-proxy (rede webproxy).
+    ports: !reset []
+    networks:
+      - default
+      - webproxy
+    environment:
+      # Descoberta automática pelo nginx-proxy + TLS pelo acme-companion.
+      VIRTUAL_HOST: contratos.prompthouse.ia.br
+      VIRTUAL_PORT: "8080"
+      LETSENCRYPT_HOST: contratos.prompthouse.ia.br
+      LETSENCRYPT_EMAIL: daniel.monteiro@digitalcollege.com.br
+
+networks:
+  webproxy:
+    external: true
+    name: webproxy
