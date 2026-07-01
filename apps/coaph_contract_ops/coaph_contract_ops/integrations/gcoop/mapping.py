@@ -86,11 +86,38 @@ def norm_pct(raw):
         return None
 
 
+import re as _re
+
+_ISO = _re.compile(r"^(\d{4})-(\d{1,2})-(\d{1,2})$")
+_BR = _re.compile(r"^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$")
+
+
 def norm_date(raw):
+    """Datas do backlog vêm em formatos MISTOS: a maioria ISO (YYYY-MM-DD),
+    mas várias em BR (dd/mm/aaaa) e uma malformada ('115-10-2026').
+
+    - ISO: parse direto (sem ambiguidade).
+    - Com barra/traço: interpreta como dia-primeiro (padrão BR); se o "mês"
+      for > 12, troca dia<->mês (linha veio em m/d/aaaa).
+    - Não reconhecida/malformada: None.
+    """
     if not raw or not str(raw).strip():
         return None
+    s = str(raw).strip()
+    m = _ISO.match(s)
+    if m:
+        y, mo, d = int(m[1]), int(m[2]), int(m[3])
+    else:
+        m = _BR.match(s)
+        if not m:
+            return None
+        d, mo, y = int(m[1]), int(m[2]), int(m[3])
+        if mo > 12 and d <= 12:  # veio em m/d/aaaa -> corrige
+            d, mo = mo, d
+    if not (1 <= mo <= 12 and 1 <= d <= 31):
+        return None
     try:
-        return getdate(str(raw).strip())
+        return getdate(f"{y:04d}-{mo:02d}-{d:02d}")
     except Exception:
         return None
 
